@@ -1,27 +1,27 @@
 %% ----------------------------------------------------------------------------
 %% Header
-\name{Kapitel 6}
+\name{Kapitel  6}
 \alias{Kapitel 6}
 \encoding{UTF-8}
 \title{Kapitel 6: Skalierung und Linking}
 
 \description{
-Das ist die Nutzerseite zum Kapitel 6, Skalierung und Linking, im Herausgeberband 
-\emph{Large-Scale Assessment mit \R}:  Methodische Grundlagen der österreichischen 
-Bildungsstandard-Überprüfung.\cr
+Das ist die Nutzerseite zum Kapitel 6, \emph{Skalierung und Linking}, im 
+Herausgeberband Large-Scale Assessment mit \R: Methodische 
+Grundlagen der österreichischen Bildungsstandardüberprüfung. 
 Im Abschnitt \strong{Details} werden die im Kapitel verwendeten \R-Syntaxen zur 
-Unterstützung für Leser/innen kommentiert und dokumentiert. Im Abschnitt
-\strong{Examples} werden die \R-Syntaxen des Kapitels vollständig widergegeben und 
-gegebenefalls erweitert. 
+Unterstützung für Leser/innen kommentiert und dokumentiert. 
+Im Abschnitt \strong{Examples} werden die \R-Syntaxen des Kapitels vollständig 
+wiedergegeben und gegebenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------
 %% Intermediate Deklarationes
 \references{
-  Trendtel, M., Pham, G. & Yanagida, T. (2016). Skalierung und Linking. In C. 
-  Schreiner & S. Breit (Hrsg.): \emph{Large-Scale Assessment mit \R}: Methodische 
-  Grundlagen der österreichischen Bildungsstandard-Überprüfung (pp. xx-yy). Wien: 
-  facultas wuv.
+  Trendtel, M., Pham, G. & Yanagida, T. (2016). Skalierung und Linking.
+  In S. Breit & C. Schreiner (Hrsg.), \emph{Large-Scale Assessment mit \R:  
+  Methodische Grundlagen der österreichischen Bildungsstandardüberprüfung} 
+  (pp. 185--224). Wien: facultas.
 }
 
 % \note{
@@ -33,34 +33,37 @@ gegebenefalls erweitert.
 }
 
 \seealso{
+%Verweis zu den Daten im Kapitel
+Zu \code{\link{datenKapitel06}}, den im Kapitel verwendeten Daten.\cr
 %Verweis zum nächsten und zum vorigen Kapitel
 Zurück zu \code{\link{Kapitel 5}}, Testdesign.\cr
 Zu \code{\link{Kapitel 7}}, Statistische Analysen produktiver Kompetenzen.\cr
 Zur \code{\link[LSAmitR:LSAmitR-package]{Übersicht}}.
-%Verweis zu Hilfeseiten eventuell zusätzlicher R-Funktionen. (\cr nach Übersicht einfügen)
+%Verweis zu Hilfeseiten eventuell zusätzlicher R-Funktionen. (\cr nach 
+%Übersicht einfügen)
 %Zur Hilfeseite von fit.r \code{\link{fit.r}}
 }
 
-%% ----------------------------------------------------------------------------
-%% Details
-\details{
-\subsection{Vorbereitungen}{
-..
-\verb{
-..
-}
-}%end Subsection Vorbereitungen
-
-
-\subsection{Abschnitt x.1: KTT}{
-\subsection{Listing 1: Skalierung der Rekodierten Daten}{
-..
-\verb{
-..
-}
-}%end Subsection Listing 1: Skalierung der Rekodierten Daten
-}%end Subsection Abschnitt x.1: KTT
-}%end Details
+% %% ----------------------------------------------------------------------------
+% %% Details
+% \details{
+% \subsection{Vorbereitungen}{
+% ..
+% \verb{
+% ..
+% }
+% }%end Subsection Vorbereitungen
+% 
+% 
+% \subsection{Abschnitt x.1: KTT}{
+% \subsection{Listing 1: Skalierung der Rekodierten Daten}{
+% ..
+% \verb{
+% ..
+% }
+% }%end Subsection Listing 1: Skalierung der Rekodierten Daten
+% }%end Subsection Abschnitt x.1: KTT
+% }%end Details
 
 %% ----------------------------------------------------------------------------
 %% Examples
@@ -163,7 +166,7 @@ mod.NIRM <- tam.mml.2pl(resp, irtmodel="2PL", pweights = w)
 tammodel <- "
   LAVAAN MODEL:
   F =~ a1__a50*I1__I50;
-  # Traitvarianz auf 1 fixieren
+  # Trait-Varianz auf 1 fixieren
   F ~~ 1*F
   MODEL CONSTRAINT:
   # Gewichtung für die Items festlegen
@@ -304,7 +307,7 @@ cbind(WLEs = c(M = weighted.mean(WLE.1PL$theta, w),
 # Abschnitt 6.3.8, Listing 1: Verteilung der Items auf Foki 
 # 
 
-table(paste("Fokus", ue$focus[ue$Item %in% colnames(datTH1)]))
+table(paste("Fokus", ue$focus[ue$Item \%in\% colnames(datTH1)]))
 table(paste("Fokus", ueTH1$focus))
 
 # -------------------------------------------------------------
@@ -313,7 +316,7 @@ table(paste("Fokus", ueTH1$focus))
 #                             Achtung: Schätzung benötigt > 300 Iterationen
 # 
 
-Q <- array(0, c(25, 5), list(items[items %in% colnames(datTH1)]))
+Q <- array(0, c(25, 5), list(items[items \%in\% colnames(datTH1)]))
 for(i in 1:25) Q[i, ueTH1$focus[i] + 1] <- 1
 mod.1PL_multi <- tam(resp = respTH1, pweights = wTH1,
                      Q = Q, control = list(snodes = 1500))
@@ -379,7 +382,7 @@ anova(mod.1PL, mod.GPCM)
 # Abschnitt 6.4.1, Listing 1: Daten vorbereiten
 #
 
-vars <- c("MB_idstud", "wgtstud", "th")
+vars <- c("idstud", "wgtstud", "th")
 # Daten der Hauptstudie
 tmp1 <- cbind("Hauptstudie" = 1, dat[,c(vars, items)])
 # Daten der Normierungsstudie
@@ -455,7 +458,7 @@ trafo_linkmod1 <- data.frame(M_Norm = 500, SD_Norm = 100, a = a, b = b,
 #
 
 normmod <- tam.mml(resp = normdat[, n.items], 
-                   pid = normdat[, "MB_idstud"])
+                   pid = normdat[, "idstud"])
 
 # -------------------------------------------------------------
 # Abschnitt 6.4.2, Listing 1a: Ergänzung zum Buch
@@ -496,7 +499,7 @@ norm.xsi <- normmod$xsi.fixed.estimated
 xsi.fixed <- mod.1PL$xsi.fixed.estimated
 # nur Parameter von Items in Hauptstudie
 norm.xsi <- norm.xsi[ 
-  rownames(norm.xsi) %in% rownames(xsi.fixed), ]
+  rownames(norm.xsi) \%in\% rownames(xsi.fixed), ]
 # Setzen der Parameter in richtiger Reihenfolge
 xsi.fixed <- cbind(match(rownames(norm.xsi), 
                          rownames(xsi.fixed)), norm.xsi[, 2])
@@ -574,7 +577,7 @@ main.xsi <- mod.1PL$xsi.fixed.estimated
 xsi.fixed <- normmod$xsi.fixed.estimated
 # nur Parameter von Items in Hauptstudie
 main.xsi <- main.xsi[ 
-  rownames(main.xsi) %in% rownames(xsi.fixed), ]
+  rownames(main.xsi) \%in\% rownames(xsi.fixed), ]
 # Setzen der Parameter in richtiger Reihenfolge
 xsi.fixed <- cbind(match(rownames(main.xsi), 
                          rownames(xsi.fixed)), main.xsi[, 2])

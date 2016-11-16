@@ -5,35 +5,58 @@
 \encoding{UTF-8}
 
 \title{
-Large-Scale Assessment mit R
+Large-Scale Assessment mit \R
 }
+
 \description{
-    ...
+Das Bundesinstitut für Bildungsforschung, Innovation und Entwicklung des 
+österreichischen Schulwesens (BIFIE) führt die Überprüfung der Bildungsstandards 
+(BIST-Ü) in Österreich durch. "Large-Scale Assessment mit \R" ist ein Handbuch der 
+grundlegenden Methodik, die bei diesen Überprüfungen zum Einsatz kommt. 
+Angefangen bei der Testkonstruktion bis zu Aspekten der Rückmeldung werden die 
+dabei eingesetzten methodischen Verfahren dargestellt und diskutiert sowie deren 
+Anwendung in \R anhand von Beispieldatensätzen, die in diesem \R-Paket zur 
+Verfügung gestellt werden, illustriert.\cr
+
+Beispiele, die sich durch den Band ziehen, lehnen sich an die BIST-Ü in Englisch 
+im Jahr 2013 an. Die Daten, die den Ausführungen zugrunde liegen, sind jedoch
+keine Echtdaten und erlauben daher auch keine Rekonstruktion der in den
+Ergebnisberichten publizierten Kennwerte. Es handelt sich (mindestens) um 
+partiell-synthetische Daten, die reale Kovarianzstrukturen zwischen Kovariaten
+und den Leistungsdaten abbilden sowie eine Mehrebenenstruktur simulieren, die in 
+den LSA-Erhebungen typischerweise auftreten. Die Datenmuster
+können weder als Einzelstücke noch als Ganzes auf tatsächliche Testpersonen, auf 
+Klassen oder Schulen zurückgeführt werden. Ebenso führen
+Ergebnisse, die in den Ausführungen der einzelnen Kapitel erzielt werden,
+nicht zu den Datensätzen, die in späteren Kapiteln verwendet werden (z. B.
+entspricht die Stichprobe, die in Kapitel 2 gezogen wird, nicht jener, deren
+Testwerte in Kapitel 6 oder Kapitel 7 untersucht werden).
 }
+
 \details{
 \tabular{ll}{
 Package: \tab \pkg{LSAmitR}\cr
 Type: \tab Package\cr
-Version: \tab 0.02 \cr
+Version: \tab 1.00 \cr
 Publication Year: \tab 2016\cr
 License: \tab GPL (>=2.0)\cr
-URL: \tab \url{http://www.bifie.at}\cr
+URL: \tab \url{https://www.bifie.at/node/3770}\cr
 }
 }
 \author{
-Thomas Kiefer [aut, cre], Alexander Robitzsch [aut], Matthias Trendtel [aut], Robert Fellinger [aut]
+Thomas Kiefer [aut, cre], Alexander Robitzsch [aut], Matthias Trendtel [aut], 
+Robert Fellinger [aut]
 
 Maintainer: Thomas Kiefer <t.kiefer@bifie.at>
 }
 \references{
-Schreiner, C. & Breit, S. (2016) \emph{Large-Scale Assessment mit R:
-Methodische Grundlagen der österreichischen Bildungsstandards-Überprüfung}. 
-Wien: facultas WUV.
+Breit, S. & Schreiner, C. [HG.] (2016). \emph{Large-Scale Assessment mit R:
+Methodische Grundlagen der österreichischen Bildungsstandardüberprüfung}. 
+Wien: facultas.
 }
 
 \seealso{
-Zu \code{\link{Kapitel 0}}, Testkonzeption: das Konzept der 
-österreichischen Bildungsstandards-Überprüfung.\cr
+Zu \code{\link{Kapitel 0}}, Konzeption der Überprüfung der Bildungsstandards in Österreich.\cr
 Zu \code{\link{Kapitel 1}}, Testkonstruktion.\cr
 Zu \code{\link{Kapitel 2}}, Stichprobenziehung.\cr
 Zu \code{\link{Kapitel 3}}, Standard-Setting.\cr
@@ -41,7 +64,7 @@ Zu \code{\link{Kapitel 4}}, Differenzielles Itemfunktionieren in Subgruppen.\cr
 Zu \code{\link{Kapitel 5}}, Testdesign.\cr
 Zu \code{\link{Kapitel 6}}, Skalierung und Linking.\cr
 Zu \code{\link{Kapitel 7}}, Statistische Analysen produktiver Kompetenzen.\cr
-Zu \code{\link{Kapitel 8}}, Behandlung fehlender Daten und PV-Ziehung.\cr
+Zu \code{\link{Kapitel 8}}, Fehlende Daten und Plausible Values.\cr
 Zu \code{\link{Kapitel 9}}, Fairer Vergleich in der Rückmeldung.\cr
 Zu \code{\link{Kapitel 10}}, Reporting und Analysen.\cr
 Zu \code{\link{Kapitel 11}}, Aspekte der Validierung.

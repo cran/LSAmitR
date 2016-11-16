@@ -1,27 +1,28 @@
 %% ----------------------------------------------------------------------------
 %% Header
-\name{Kapitel 4}
+\name{Kapitel  4}
 \alias{Kapitel 4}
 \encoding{UTF-8}
 \title{Kapitel 4: Differenzielles Itemfunktionieren in Subgruppen}
 
 \description{
-Das ist die Nutzerseite zum Kapitel 4, Differenzielles Itemfunktionieren in 
-Subgruppen, im Herausgeberband \emph{Large-Scale Assessment mit \R}:  Methodische 
-Grundlagen der österreichischen Bildungsstandard-Überprüfung.\cr
+Das ist die Nutzerseite zum Kapitel 4, \emph{Differenzielles Itemfunktionieren 
+in Subgruppen}, im Herausgeberband Large-Scale Assessment mit \R: Methodische 
+Grundlagen der österreichischen Bildungsstandardüberprüfung. 
 Im Abschnitt \strong{Details} werden die im Kapitel verwendeten \R-Syntaxen zur 
-Unterstützung für Leser/innen kommentiert und dokumentiert. Im Abschnitt
-\strong{Examples} werden die \R-Syntaxen des Kapitels vollständig widergegeben und 
-gegebenefalls erweitert. 
+Unterstützung für Leser/innen kommentiert und dokumentiert. 
+Im Abschnitt \strong{Examples} werden die \R-Syntaxen des Kapitels vollständig 
+wiedergegeben und gegebenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------
 %% Intermediate Deklarationes
 \references{
   Trendtel, M., Schwabe, F. & Fellinger, R. (2016). Differenzielles 
-  Itemfunktionieren in Subgruppen. In C. Schreiner & S. Breit (Hrsg.): 
-  \emph{Large-Scale Assessment mit \R}: Methodische Grundlagen der 
-  österreichischen Bildungsstandard-Überprüfung (pp. xx-yy). Wien: facultas wuv.
+  Itemfunktionieren in Subgruppen. 
+  In S. Breit & C. Schreiner (Hrsg.), \emph{Large-Scale Assessment mit \R:  
+  Methodische Grundlagen der österreichischen Bildungsstandardüberprüfung} 
+  (pp. 111--147). Wien: facultas.
 }
 
 % \note{
@@ -33,34 +34,37 @@ gegebenefalls erweitert.
 }
 
 \seealso{
+%Verweis zu den Daten im Kapitel
+Zu \code{\link{datenKapitel04}}, den im Kapitel verwendeten Daten.\cr
 %Verweis zum nächsten und zum vorigen Kapitel
 Zurück zu \code{\link{Kapitel 3}}, Standard-Setting.\cr
 Zu \code{\link{Kapitel 5}}, Testdesign.\cr
 Zur \code{\link[LSAmitR:LSAmitR-package]{Übersicht}}.
-%Verweis zu Hilfeseiten eventuell zusätzlicher R-Funktionen. (\cr nach Übersicht einfügen)
+%Verweis zu Hilfeseiten eventuell zusätzlicher R-Funktionen. (\cr nach 
+%Übersicht einfügen)
 %Zur Hilfeseite von fit.r \code{\link{fit.r}}
 }
 
-%% ----------------------------------------------------------------------------
-%% Details
-\details{
-\subsection{Vorbereitungen}{
-..
-\verb{
-..
-}
-}%end Subsection Vorbereitungen
-
-
-\subsection{Abschnitt x.1: KTT}{
-\subsection{Listing 1: Skalierung der Rekodierten Daten}{
-..
-\verb{
-..
-}
-}%end Subsection Listing 1: Skalierung der Rekodierten Daten
-}%end Subsection Abschnitt x.1: KTT
-}%end Details
+% %% ----------------------------------------------------------------------------
+% %% Details
+% \details{
+% \subsection{Vorbereitungen}{
+% ..
+% \verb{
+% ..
+% }
+% }%end Subsection Vorbereitungen
+% 
+% 
+% \subsection{Abschnitt x.1: KTT}{
+% \subsection{Listing 1: Skalierung der Rekodierten Daten}{
+% ..
+% \verb{
+% ..
+% }
+% }%end Subsection Listing 1: Skalierung der Rekodierten Daten
+% }%end Subsection Abschnitt x.1: KTT
+% }%end Details
 
 %% ----------------------------------------------------------------------------
 %% Examples
@@ -240,7 +244,7 @@ A[,2,c("AHS", "HO:AHS")]
 # Abschnitt 4.4.3, Listing 9: Schätzen des Modells
 #
 
-mod <- tam.mml(resp = resp, A=A[,,1:52])
+mod <- tam.mml(resp = resp, A=A)
 
 # -------------------------------------------------------------
 # Abschnitt 4.4.3, Listing 10: Ausgabe der Parameterschätzer

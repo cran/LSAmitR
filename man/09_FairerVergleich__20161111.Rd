@@ -1,27 +1,28 @@
 %% ----------------------------------------------------------------------------
 %% Header
-\name{Kapitel 9}
+\name{Kapitel  9}
 \alias{Kapitel 9}
 \encoding{UTF-8}
-\title{Kapitel 9: Fairer Vergleich in der Rückmeldung}
+\title{Kapitel 9: Fairer Vergleich in der Rueckmeldung}
 
 \description{
-Das ist die Nutzerseite zum Kapitel 9, Fairer Vergleich in der Rückmeldung, im 
-Herausgeberband \emph{Large-Scale Assessment mit \R}:  Methodische Grundlagen der 
-österreichischen Bildungsstandard-Überprüfung.\cr
+Das ist die Nutzerseite zum Kapitel 9, \emph{Fairer Vergleich in der 
+Rückmeldung}, im Herausgeberband Large-Scale Assessment mit \R: Methodische 
+Grundlagen der österreichischen Bildungsstandardüberprüfung. 
 Im Abschnitt \strong{Details} werden die im Kapitel verwendeten \R-Syntaxen zur 
-Unterstützung für Leser/innen kommentiert und dokumentiert. Im Abschnitt
-\strong{Examples} werden die \R-Syntaxen des Kapitels vollständig widergegeben und 
-gegebenefalls erweitert. 
+Unterstützung für Leser/innen kommentiert und dokumentiert. 
+Im Abschnitt \strong{Examples} werden die \R-Syntaxen des Kapitels vollständig 
+wiedergegeben und gegebenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------
 %% Intermediate Deklarationes
 \references{
-  Pham, G., Robitzsch, A., George, A. C. & Freunberger, R. (2016). Fairer 
-  Vergleich in der Rückmeldung. In C. Schreiner & S. Breit (Hrsg.): 
-  \emph{Large-Scale Assessment mit \R}: Methodische Grundlagen der 
-  österreichischen Bildungsstandard-Überprüfung (pp. xx-yy). Wien: facultas wuv.
+  Pham, G., Robitzsch, A., George, A. C. & Freunberger, R. (2016).
+  Fairer Vergleich in der Rückmeldung. 
+  In S. Breit & C. Schreiner (Hrsg.), \emph{Large-Scale Assessment mit \R:  
+  Methodische Grundlagen der österreichischen Bildungsstandardüberprüfung} 
+  (pp. 295--332). Wien: facultas.
 }
 
 % \note{
@@ -33,10 +34,13 @@ gegebenefalls erweitert.
 }
 
 \seealso{
-Zurück zu \code{\link{Kapitel 8}}, Behandlung fehlender Daten und PV-Ziehung.\cr
+%Verweis zu den Daten im Kapitel
+Zu \code{\link{datenKapitel09}}, den im Kapitel verwendeten Daten.\cr
+Zurück zu \code{\link{Kapitel 8}}, Fehlende Daten und Plausible Values.\cr
 Zu \code{\link{Kapitel 10}}, Reporting und Analysen.\cr
 Zur \code{\link[LSAmitR:LSAmitR-package]{Übersicht}}.
-%Verweis zu Hilfeseiten eventuell zusätzlicher R-Funktionen. (\cr nach Übersicht einfügen)
+%Verweis zu Hilfeseiten eventuell zusätzlicher R-Funktionen. (\cr nach 
+%Übersicht einfügen)
 %Zur Hilfeseite von \code{\link[TAM:TAM-package]{TAM}}
 }
 
@@ -44,10 +48,48 @@ Zur \code{\link[LSAmitR:LSAmitR-package]{Übersicht}}.
 %% Details
 \details{
 \subsection{Vorbereitungen}{
-Der zur Illustration verwendete Datensatz \code{dat} beinhaltet (imputierte) aggregierte Leistungs- und Hintergrunddaten von 244 Schulen, bestehend aus 74 ländlichen allgemeinbildenden Pflichtschulen (APS, Stratum 1), 69 städtischen APS (Stratum 2), 52 ländlichen allgemeinbildenden höheren Schulen (AHS, Stratum 3) und 49 städtischen AHS (Stratum 4). 
-Im Kapitel wird zur Bildung von Interaktionseffekten und quadratischen Termen der Kovariaten eine neue Funktion \code{covainteraction} verwendet.
-\verb{
-data(datenKapitel09)
+Der zur Illustration verwendete Datensatz \code{dat} beinhaltet (imputierte) 
+aggregierte Leistungs- und Hintergrunddaten von 244 Schulen, bestehend aus 74 
+ländlichen allgemeinbildenden Pflichtschulen (APS, Stratum 1), 69 städtischen 
+APS (Stratum 2), 52 ländlichen allgemeinbildenden höheren Schulen (AHS, Stratum 
+3) und 49 städtischen AHS (Stratum 4). 
+Im Kapitel wird zur Bildung von Interaktionseffekten und quadratischen Termen 
+der Kovariaten eine neue Funktion \code{covainteraction} verwendet.
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> data(datenKapitel09)}\cr
+\code{> dat <- datenKapitel09}\cr
+\code{> }\cr
+\code{> covainteraction <- function(dat,covas,nchar)\{}\cr
+\code{+   for(ii in 1:(length(covas)))\{}\cr
+\code{+     vv1 <- covas[ii]}\cr
+\code{+     # Interaktion von vv1 mit sich selbst}\cr
+\code{+     subname1 <- substr(vv1,1,nchar)}\cr
+\code{+     intvar <- paste0(subname1, subname1)}\cr
+\code{+     if(vv1 == covas[1])\{}\cr
+\code{+       dat.int <- dat[,vv1]*dat[,vv1];}\cr
+\code{+       newvars <- intvar \} else \{}\cr
+\code{+         dat.int <- cbind(dat.int,dat[,vv1]*dat[,vv1]); }\cr
+\code{+         newvars <- c(newvars,intvar) }\cr
+\code{+       \}}\cr
+\code{+     # Interaktion von vv1 mit restlichen Variablen}\cr
+\code{+     if(ii < length(covas))\{}\cr
+\code{+       for(jj in ((ii+1):length(covas)))\{}\cr
+\code{+         vv2 <- covas[jj]}\cr
+\code{+         subname2 <- substr(vv2,1,nchar)}\cr
+\code{+         intvar <- paste0(subname1, subname2)}\cr
+\code{+         newvars <- c(newvars, intvar)}\cr
+\code{+         dat.int <- cbind(dat.int,dat[,vv1]*dat[,vv2])}\cr
+\code{+       \}}\cr
+\code{+     \}}\cr
+\code{+     }\cr
+\code{+   \}}\cr
+\code{+   dat.int <- data.frame(dat.int)}\cr
+\code{+   names(dat.int) <- newvars}\cr
+\code{+   return(dat.int)}\cr
+\code{+ \}}\cr
+}{\verb{data(datenKapitel09)
 dat <- datenKapitel09
 
 covainteraction <- function(dat,covas,nchar){
@@ -78,97 +120,200 @@ covainteraction <- function(dat,covas,nchar){
   names(dat.int) <- newvars
   return(dat.int)
 }
-
-
 }
+}%end else / end ifelse latex
+
 }%end Subsection Vorbereitungen
 
 
 \subsection{Abschnitt 9.2.5.1: Kovariaten und Interaktionsterme}{
 \subsection{Listing 1: Kovariatenauswahl und z-Standardisierung}{
-Als Variablen zur Beschreibung von Kontext und Schülerzusammensetzung in den Schulen werden in diesem Beispiel die logarithmierte Schulgröße \code{groesse}, der Anteil an Mädchen \code{female}, der Anteil an Schülerinnen und Schülern mit Migrationshintergrund \code{mig} und der mittlere sozioökonomische Status (SES) \code{sozstat} eingeführt. Die abhängige Variable ist die aggregierte Schülerleistung der Schule \code{TWLE}. Alle Kovariaten (\code{vars}) werden zunächst z-standardisiert (\code{zvars}).
-\verb{
-vars <- c("groesse","female","mig","sozstat")
+Als Variablen zur Beschreibung von Kontext und Schülerzusammensetzung in den 
+Schulen werden in diesem Beispiel die logarithmierte Schulgröße \code{groesse}, 
+der Anteil an Mädchen \code{female}, der Anteil an Schülerinnen und Schülern mit 
+Migrationshintergrund \code{mig} und der mittlere sozioökonomische Status (SES) 
+\code{sozstat} eingeführt. 
+Die abhängige Variable ist die aggregierte 
+Schülerleistung der Schule \code{TWLE}. Alle Kovariaten (\code{vars}) werden 
+zunächst z-standardisiert (\code{zvars}).
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> vars <- c("groesse","female","mig","sozstat")}\cr
+\code{> zvars <- paste0("z",vars)}\cr
+\code{> dat[,zvars] <- scale(dat[,vars],scale = TRUE)}\cr
+}{\verb{vars <- c("groesse","female","mig","sozstat")
 zvars <- paste0("z",vars)
-dat[,zvars] <- scale(dat[,vars],scale = T)
+dat[,zvars] <- scale(dat[,vars],scale = TRUE)
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 1: Kovariatenauswahl und z-Standardisierung
 
 \subsection{Listing 2: Interaktionen bilden, z-standardisieren}{
-Zur Optimierung der Modellspezifikation werden Interaktionseffekte und quadratische Terme der Kovariaten gebildet, dann z-standardisiert und in den Gesamtdatensatz hinzugefügt. Die neuen Variablennamen sind in der Liste \code{intvars} aufgelistet.
-\verb{
-dat1 <- covainteraction(dat = dat,covas = zvars,nchar = 4)
+Zur Optimierung der Modellspezifikation werden Interaktionseffekte und 
+quadratische Terme der Kovariaten gebildet, dann z-standardisiert und in den 
+Gesamtdatensatz hinzugefügt. 
+Die neuen Variablennamen sind in der Liste \code{intvars} aufgelistet.
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> dat1 <- LSAmitR::covainteraction(dat = dat,covas = zvars,nchar = 4)}\cr
+\code{> intvars <- names(dat1) # Interaktionsvariablen
+}\cr
+\code{> dat1[,intvars] <- scale(dat1[,intvars],scale = TRUE)}\cr
+\code{> dat <- cbind(dat,dat1)}\cr
+}{\verb{dat1 <- LSAmitR::covainteraction(dat = dat,covas = zvars,nchar = 4)
 intvars <- names(dat1) # Interaktionsvariablen
-dat1[,intvars] <- scale(dat1[,intvars],scale = T)
+dat1[,intvars] <- scale(dat1[,intvars],scale = TRUE)
 dat <- cbind(dat,dat1)
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 2: Interaktionen bilden, z-standardisieren
 
 \subsection{Listing 3: Haupt- und Interaktionseffekte}{
-\verb{
-maineff <- zvars # Haupteffekte 
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> maineff <- zvars # Haupteffekte }\cr
+\code{> alleff <- c(zvars,intvars) # Haupt- und Interaktionseffekte}\cr
+}{\verb{maineff <- zvars # Haupteffekte 
 alleff <- c(zvars,intvars) # Haupt- und Interaktionseffekte
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 3: Haupt- und Interaktionseffekte
 }%end Subsection Abschnitt 9.2.5.1: Kovariaten und Interaktionsterme
 
 
 \subsection{Abschnitt 9.2.5.2: OLS-Regression}{
 \subsection{Listing 4: OLS-Regression mit Haupteffekten}{
-Das OLS-Regressionsmodell mit den Haupteffekten als Modellprädiktoren (\code{ols.mod1}) für Schulen im Stratum (\code{st}) 4
-\verb{
-fm.ols1 <- paste0("TWLE ~ ",paste(maineff,collapse=" + "))
+Das OLS-Regressionsmodell mit den Haupteffekten als Modellprädiktoren 
+(\code{ols.mod1}) für Schulen im Stratum (\code{st}) 4
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> fm.ols1 <- paste0("TWLE ~ ",paste(maineff,collapse=" + "))}\cr
+\code{> fm.ols1 <- as.formula(fm.ols1) # Modellgleichung}\cr
+\code{> st <- 4}\cr
+\code{> pos <- which(dat$stratum == st) # Schulen im Stratum st}\cr
+\code{> ols.mod1 <- lm(formula = fm.ols1,data = dat[pos,]) # Regression}\cr
+}{\verb{fm.ols1 <- paste0("TWLE ~ ",paste(maineff,collapse=" + "))
 fm.ols1 <- as.formula(fm.ols1) # Modellgleichung
 st <- 4
 pos <- which(dat$stratum == st) # Schulen im Stratum st
 ols.mod1 <- lm(formula = fm.ols1,data = dat[pos,]) # Regression
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 4: OLS-Regression mit Haupteffekten
 }%end Subsection Abschnitt 9.2.5.2: OLS-Regression
 
 \subsection{Abschnitt 9.2.5.3: Lasso-Regression}{
 \subsection{Listing 5: Datenaufbereitung}{
-Für die Durchführung der Lasso-Regression wird das R-Paket glmnet (Friedman et al., 2010) eingesetzt. Die Kovariatenmatrix (\code{Z}) sowie der Vektor der abhängigen Leistungswerte (\code{Y}) müssen definiert werden.
-\verb{
-library(glmnet)
+Für die Durchführung der Lasso-Regression wird das R-Paket glmnet 
+(Friedman et al., 2010) eingesetzt. Die Kovariatenmatrix (\code{Z}) sowie der 
+Vektor der abhängigen Leistungswerte (\code{Y}) müssen definiert werden.
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> library(glmnet)}\cr
+\code{> Z <- as.matrix(dat[pos,alleff]) # Kovariatenmatrix}\cr
+\code{> Y <- dat$TWLE[pos] # Abhängige Variable}\cr
+}{\verb{library(glmnet)
 Z <- as.matrix(dat[pos,alleff]) # Kovariatenmatrix
 Y <- dat$TWLE[pos] # Abhängige Variable
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 5: Datenaufbereitung
 
-\subsection{Listing 6: Bestimmung Teilmengen für Kreuzvalidierung, Lasso-Regression}{
-Das Lasso-Verfahren wird mit der Funktion \code{cv.glmnet()} durchgeführt. Zur Auswahl eines optimalen shrinkage \eqn{\lambda} wird das Verfahren der K-fachen Kreuzvalidierung verwendet. Die Schulstichprobe wird durch ID-Zuweisung (\code{foldid}) verschiedenen Teilmengen zugewiesen.
-\verb{
-nid <- floor(length(pos)/3) # Teilmengen definieren 
+\subsection{Listing 6: Bestimmung Teilmengen für Kreuzvalidierung, 
+Lasso-Regression}{
+Das Lasso-Verfahren wird mit der Funktion \code{cv.glmnet()} durchgeführt. 
+Zur Auswahl eines optimalen shrinkage \eqn{\lambda} wird das Verfahren der 
+K-fachen Kreuzvalidierung verwendet. 
+Die Schulstichprobe wird durch ID-Zuweisung (\code{foldid}) verschiedenen 
+Teilmengen zugewiesen.
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> nid <- floor(length(pos)/3) # Teilmengen definieren }\cr
+\code{> foldid <- rep(c(1:nid),3,length.out=length(pos)) # Zuweisung}\cr
+\code{> lasso.mod2 <- glmnet::cv.glmnet(x=Z,y=Y,alpha = 1, foldid = foldid)}\cr
+}{\verb{nid <- floor(length(pos)/3) # Teilmengen definieren 
 foldid <- rep(c(1:nid),3,length.out=length(pos)) # Zuweisung
 lasso.mod2 <- glmnet::cv.glmnet(x=Z,y=Y,alpha = 1, foldid = foldid)
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 6: Bestimmung Teilmengen für Kreuzvalidierung, Lasso-Regression
 
 \subsection{Listing 7: Erwartungswerte der Schulen}{
-Entsprechend \code{lambda.min} werden die Regressionskoeffizienten und die entsprechenden Erwartungswerte der Schulen bestimmt.
-\verb{
-lasso.pred2 <- predict(lasso.mod2,newx = Z,s="lambda.min")
+Entsprechend \code{lambda.min} werden die Regressionskoeffizienten und die 
+entsprechenden Erwartungswerte der Schulen bestimmt.
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> lasso.pred2 <- predict(lasso.mod2,newx = Z,s="lambda.min")}\cr
+\code{> dat$expTWLE.Lasso2[pos] <- as.vector(lasso.pred2)}\cr
+}{\verb{lasso.pred2 <- predict(lasso.mod2,newx = Z,s="lambda.min")
 dat$expTWLE.Lasso2[pos] <- as.vector(lasso.pred2)
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 7: Erwartungswerte der Schulen
 
 \subsection{Listing 8: Bestimmung R^2}{
 Bestimmung des aufgeklärten Varianzanteils der Schulleistung \code{R^2}.
-\verb{
-varY <- var(dat$TWLE[pos])
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> varY <- var(dat$TWLE[pos])}\cr
+\code{> varY.lasso.mod2 <- var(dat$expTWLE.Lasso2[pos])}\cr
+\code{> R2.lasso.mod2 <- varY.lasso.mod2/varY}\cr
+}{\verb{varY <- var(dat$TWLE[pos])
 varY.lasso.mod2 <- var(dat$expTWLE.Lasso2[pos])
 R2.lasso.mod2 <- varY.lasso.mod2/varY
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 8: Bestimmung R^2
 }%end Subsection Abschnitt 9.2.5.3: Lasso-Regression
 
 
 \subsection{Abschnitt 9.2.5.4: Nichtparametrische Regression}{
 \subsection{Listing 9: Distanzberechnung}{
-Der erste Schritt zur Durchführung einer nichtparametrischen Regression ist die Erstellung der Distanzmatrix zwischen Schulen. In diesem Beispiel wird die euklidische Distanz als Distanzmaß berechnet, alle standardisierten Haupteffekte sind eingeschlossen. Außerdem setzen wir die Gewichte von allen Kovariaten (\code{gi}) auf 1. \code{dfr.i} in diesem Beispiel ist die Distanzmatrix für erste Schule im Stratum.
-\verb{
-N <- length(pos) # Anzahl Schulen im Stratum
+Der erste Schritt zur Durchführung einer nichtparametrischen Regression ist die 
+Erstellung der Distanzmatrix zwischen Schulen. In diesem Beispiel wird die 
+euklidische Distanz als Distanzmaß berechnet, alle standardisierten Haupteffekte 
+sind eingeschlossen. Außerdem setzen wir die Gewichte von allen Kovariaten 
+(\code{gi}) auf 1. \code{dfr.i} in diesem Beispiel ist die Distanzmatrix für
+erste Schule im Stratum.
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> N <- length(pos) # Anzahl Schulen im Stratum}\cr
+\code{> schools <- dat$idschool[pos] # Schulen-ID}\cr
+\code{> i <- 1}\cr
+\code{> # Teildatensatz von Schule i}\cr
+\code{> dat.i <- dat[pos[i],c("idschool","TWLE",maineff)]}\cr
+\code{> names(dat.i) <- paste0(names(dat.i),".i")}\cr
+\code{> # Daten der Vergleichsschulen}\cr
+\code{> dat.vgl <- dat[pos[-i],c("idschool","TWLE",maineff)]}\cr
+\code{> index.vgl <- match(dat.vgl$idschool,schools)}\cr
+\code{> # Daten zusammenfügen}\cr
+\code{> dfr.i <- data.frame("index.i"=i,dat.i,"index.vgl"=index.vgl,}\cr
+\code{+                     dat.vgl, row.names=NULL)}\cr
+\code{> # Distanz zur Schule i}\cr
+\code{> dfr.i$dist <- 0}\cr
+\code{> gi <- c(1,1,1,1)}\cr
+\code{> for(ii in 1:length(maineff))\{}\cr
+\code{+   vv <- maineff[ii]}\cr
+\code{+   pair.vv <- grep(vv, names(dfr.i), value=T)}\cr
+\code{+   dist.vv <- gi[ii]*((dfr.i[,pair.vv[1]]-dfr.i[,pair.vv[2]])^2)}\cr
+\code{+   dfr.i$dist <- dfr.i$dist + dist.vv \}}\cr
+}{\verb{N <- length(pos) # Anzahl Schulen im Stratum
 schools <- dat$idschool[pos] # Schulen-ID
 i <- 1
 # Teildatensatz von Schule i
@@ -177,7 +322,7 @@ names(dat.i) <- paste0(names(dat.i),".i")
 # Daten der Vergleichsschulen
 dat.vgl <- dat[pos[-i],c("idschool","TWLE",maineff)]
 index.vgl <- match(dat.vgl$idschool,schools)
-# Daten zusammenfuegen
+# Daten zusammenfügen
 dfr.i <- data.frame("index.i"=i,dat.i,"index.vgl"=index.vgl,
                     dat.vgl, row.names=NULL)
 # Distanz zur Schule i
@@ -189,26 +334,77 @@ for(ii in 1:length(maineff)){
   dist.vv <- gi[ii]*((dfr.i[,pair.vv[1]]-dfr.i[,pair.vv[2]])^2)
   dfr.i$dist <- dfr.i$dist + dist.vv }
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 9: Distanzberechnung
 
 \subsection{Listing 10: H initiieren}{
-Die Gewichte w_{ik} für jedes Paar (i, k) von Schulen werden mithilfe der Distanz, der Gauß’schen Kernfunktion (\code{dnorm}) als Transformationsfunktion sowie einer schulspezifischen Bandweite h_i berechnet. Die Auswahl des optimalen Werts \eqn{\hat{h_i}} für jede Schule i erfolgt nach Vieu (1991). Zunächst wird ein Vektor \code{H} so gewählt, dass der optimale Wert \eqn{\hat{h_i}} größer als der kleinste und kleiner als der größte Wert in \code{H} ausfällt. Je kleiner das Intervall zwischen den Werten in \code{H} ist, desto wahrscheinlicher ist, dass ein Listenelement den optimalen Wert erlangt. Auf der anderen Seite korrespondiert die Rechenzeit mit der Länge von \code{H}. Gemäß der Größe der Vergleichsgruppe wählen wir eine Länge von 30 für \code{H}, zusätzlich wird ein sehr großer Wert (100000) für die Fälle hinzugefügt, bei denen alle Gewichte beinahe gleich sind.
-\verb{
-d.dist <- max(dfr.i$dist)-min(dfr.i$dist)
+Die Gewichte w_{ik} für jedes Paar (i, k) von Schulen werden mithilfe der 
+Distanz, der Gauß’schen Kernfunktion (\code{dnorm}) als Transformationsfunktion
+sowie einer schulspezifischen Bandweite h_i berechnet. Die Auswahl des optimalen
+Werts \eqn{\hat{h_i}} für jede Schule i erfolgt nach Vieu (1991). Zunächst wird
+ein Vektor \code{H} so gewählt, dass der optimale Wert \eqn{\hat{h_i}} größer 
+als der kleinste und kleiner als der größte Wert in \code{H} ausfällt. 
+Je kleiner das Intervall zwischen den Werten in \code{H} ist, desto 
+wahrscheinlicher ist, dass ein Listenelement den optimalen Wert erlangt. 
+Auf der anderen Seite korrespondiert die Rechenzeit mit der Länge von \code{H}. 
+Gemäß der Größe der Vergleichsgruppe wählen wir eine Länge von 30 für \code{H}, 
+zusätzlich wird ein sehr großer Wert (100000) für die Fälle hinzugefügt, bei 
+denen alle Gewichte beinahe gleich sind.
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> d.dist <- max(dfr.i$dist)-min(dfr.i$dist)}\cr
+\code{> H <- c(seq(d.dist/100,d.dist,length=30),100000)}\cr
+\code{> V1 <- length(H) }\cr
+\code{> # Anzahl Vergleichsschulen}\cr
+\code{> n <- nrow(dfr.i) }\cr
+}{\verb{d.dist <- max(dfr.i$dist)-min(dfr.i$dist)
 H <- c(seq(d.dist/100,d.dist,length=30),100000)
 V1 <- length(H) 
 # Anzahl Vergleichsschulen
 n <- nrow(dfr.i) 
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 10: H initiieren
 
-\subsection{Listing 11: Leave-One-Out-Schätzer der jeweiligen Vergleichsschule k nach h in H}{
-Auf Basis aller Werte in \code{H} und dem jeweils entsprechenden Gewicht w_{ik} (\code{wgt.h}) werden die Leave-One-Out-Schätzer der jeweiligen Vergleichsschule (\code{pred.k}) berechnet.
-\verb{
-sumw <- 0*H # Vektor w_{ik} initiieren, h in H
+\subsection{Listing 11: Leave-One-Out-Schätzer der jeweiligen Vergleichsschule k
+nach h in H}{
+Auf Basis aller Werte in \code{H} und dem jeweils entsprechenden Gewicht w_{ik}
+(\code{wgt.h}) werden die Leave-One-Out-Schätzer der jeweiligen Vergleichsschule
+(\code{pred.k}) berechnet.
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> sumw <- 0*H # Vektor w_{ik} initiieren, h in H}\cr
+\code{> av <- "TWLE"}\cr
+\code{> dfr0.i <- dfr.i[,c("idschool",av)]}\cr
+\code{> # Schleife über alle h-Werte}\cr
+\code{> for (ll in 1:V1 )\{}\cr
+\code{+   h <- H[ll]}\cr
+\code{+   # Gewicht w_\{ik\} bei h}\cr
+\code{+   dfr.i$wgt.h <- dnorm(sqrt(dfr.i$dist), mean=0, sd=sqrt(h))}\cr
+\code{+   # Summe von w_\{ik\} bei h}\cr
+\code{+   sumw[which(H==h)] <- sum(dfr.i$wgt.h)}\cr
+\code{+   # Leave-one-out-Schätzer von Y_k}\cr
+\code{+   for (k in 1:n)\{}\cr
+\code{+     # Regressionsformel}\cr
+\code{+     fm <- paste0(av,"~",paste0(maineff,collapse="+"))}\cr
+\code{+     fm <- as.formula(fm)}\cr
+\code{+     # Regressionsanalyse ohne Beitrag von Schule k}\cr
+\code{+     dfr.i0 <- dfr.i[-k,]}\cr
+\code{+     mod.k <- lm(formula=fm,data=dfr.i0,weights=dfr.i0$wgt.h)}\cr
+\code{+     # Erwartungswert anhand Kovariaten der Schule k berechnen}\cr
+\code{+     pred.k <- predict(mod.k, dfr.i)[k]}\cr
+\code{+     dfr0.i[k,paste0( "h_",h) ] <- pred.k}\cr
+\code{+ \}\}}\cr
+\code{> # Erwartungswerte auf Basis verschiedener h-Werte}\cr
+\code{> dfr1 <- data.frame("idschool.i"=dfr.i$idschool.i[1],"h"=H )}\cr
+}{\verb{sumw <- 0*H # Vektor w_{ik} initiieren, h in H
 av <- "TWLE"
 dfr0.i <- dfr.i[,c("idschool",av)]
-# Schleife ueber alle h-Werte
+# Schleife über alle h-Werte
 for (ll in 1:V1 ){
   h <- H[ll]
   # Gewicht w_{ik} bei h
@@ -230,13 +426,29 @@ for (ll in 1:V1 ){
 # Erwartungswerte auf Basis verschiedener h-Werte
 dfr1 <- data.frame("idschool.i"=dfr.i$idschool.i[1],"h"=H )
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 11: Leave-One-Out-Schätzer der jeweiligen Vergleichsschule k nach h in H
 
 \subsection{Listing 12: Kreuzvalidierungskriterium nach h in H}{
-Zur Berechnung der Kreuzvalidierungskriterien (\code{CVh}, je kleiner, desto reliabler sind die Schätzwerte) für alle Werte h in \code{H} verwenden wir in diesem Beispiel die Plug-in-Bandweite nach Altman und Leger (1995) (\code{hAL}), die mit der Funktion \code{ALbw()} des R-Pakets \code{kerdiest} aufrufbar ist.
-\verb{
-library(kerdiest)
-hAL <- ALbw("n",dfr.i$dist) # Plug-in Bandweite
+Zur Berechnung der Kreuzvalidierungskriterien (\code{CVh}, je kleiner, desto 
+reliabler sind die Schätzwerte) für alle Werte h in \code{H} verwenden wir in 
+diesem Beispiel die Plug-in-Bandweite nach Altman und Leger (1995) (\code{hAL}), 
+die mit der Funktion \code{ALbw()} des R-Pakets \code{kerdiest} aufrufbar ist.
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> library(kerdiest)}\cr
+\code{> hAL <- kerdiest::ALbw("n",dfr.i$dist) # Plug-in Bandweite}\cr
+\code{> dfr.i$cross.h <- hAL}\cr
+\code{> dfr.i$crosswgt <- dnorm( sqrt(dfr.i$dist), mean=0, sd = sqrt(hAL) ) }\cr
+\code{> # Kreuzvalidierungskriterium CVh}\cr
+\code{> vh <- grep("h_",colnames(dfr0.i),value=TRUE)}\cr
+\code{> for (ll in 1:V1)\{}\cr
+\code{+   dfr1[ll,"CVh"] <- sum( (dfr0.i[,av] - dfr0.i[,vh[ll]])^2 * }\cr
+\code{+                            dfr.i$crosswgt) / n\}}\cr
+}{\verb{library(kerdiest)
+hAL <- kerdiest::ALbw("n",dfr.i$dist) # Plug-in Bandweite
 dfr.i$cross.h <- hAL
 dfr.i$crosswgt <- dnorm( sqrt(dfr.i$dist), mean=0, sd = sqrt(hAL) ) 
 # Kreuzvalidierungskriterium CVh
@@ -244,37 +456,73 @@ vh <- grep("h_",colnames(dfr0.i),value=TRUE)
 for (ll in 1:V1){
   dfr1[ll,"CVh"] <- sum( (dfr0.i[,av] - dfr0.i[,vh[ll]])^2 * 
                            dfr.i$crosswgt) / n}
-
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 12: Kreuzvalidierungskriterium nach h in H
 
 \subsection{Listing 13: Bestimmung optimales Wertes von h}{
-Der optimale Wert von h in \code{H} (\code{h.min}) entspricht dem mit dem kleinsten resultierenden \code{CVh}.
-\verb{
-dfr1$min.h.index <- 0
+Der optimale Wert von h in \code{H} (\code{h.min}) entspricht dem mit dem 
+kleinsten resultierenden \code{CVh}.
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> dfr1$min.h.index <- 0}\cr
+\code{> ind <-  which.min( dfr1$CVh )}\cr
+\code{> dfr1$min.h.index[ind] <- 1}\cr
+\code{> dfr1$h.min <- dfr1$h[ind]}\cr
+}{\verb{dfr1$min.h.index <- 0
 ind <-  which.min( dfr1$CVh )
-dfr1$min.h.index[ind ] <- 1
+dfr1$min.h.index[ind] <- 1
 dfr1$h.min <- dfr1$h[ind]
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 13: Bestimmung optimales Wertes von h
 
 \subsection{Listing 14: Kleinste Quadratsumme der Schätzfehler}{
-Kleinste Quadratsumme der Schätzfehler der nichtparametrischen Regression mit h=\code{h.min}.
-\verb{
-dfr1$CVhmin <- dfr1[ ind , "CVh" ]
+Kleinste Quadratsumme der Schätzfehler der nichtparametrischen Regression mit
+h=\code{h.min}.
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> dfr1$CVhmin <- dfr1[ ind , "CVh" ]}\cr
+}{\verb{dfr1$CVhmin <- dfr1[ ind , "CVh" ]
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 14: Kleinste Quadratsumme der Schätzfehler
 
 \subsection{Listing 15: Effizienzsteigerung}{
-Die Effizienz (Steigerung der Schätzungsreliabilität) der nichtparametrischen Regression gegenüber der linearen Regression (äquivalent zu \code{CVh} bei h=100000).
-\verb{
-dfr1$eff_gain <-  100 * ( dfr1[V1,"CVh"] / dfr1$CVhmin[1] - 1 )
+Die Effizienz (Steigerung der Schätzungsreliabilität) der nichtparametrischen 
+Regression gegenüber der linearen Regression (äquivalent zu \code{CVh} bei 
+h=100000).
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> dfr1$eff_gain <-  100 * ( dfr1[V1,"CVh"] / dfr1$CVhmin[1] - 1 ) }\cr
+}{\verb{dfr1$eff_gain <-  100 * ( dfr1[V1,"CVh"] / dfr1$CVhmin[1] - 1 )
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 15: Effizienzsteigerung
 
 \subsection{Listing 16: Durchführung der nichtparametrischen Regression}{
-\verb{
-h <- dfr1$h.min[1]  # h.min
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> h <- dfr1$h.min[1]  # h.min}\cr
+\code{> dfr.i$wgt.h <- dnorm(sqrt(dfr.i$dist),sd=sqrt(h))/}\cr
+\code{+   dnorm(0,sd= sqrt(h)) # w_\{ik\} bei h.min      }\cr
+\code{> dfr.i0 <- dfr.i}\cr
+\code{> # Lokale Regression    }\cr
+\code{> mod.ii <- lm(formula=fm,data=dfr.i0,weights=dfr.i0$wgt.h)}\cr
+\code{> # Kovariaten Schule i}\cr
+\code{> predM <- data.frame(dfr.i[1,paste0(maineff,".i")])    }\cr
+\code{> names(predM) <- maineff}\cr
+\code{> pred.ii <- predict(mod.ii, predM) # Schätzwert Schule i}\cr
+\code{> dat$expTWLE.np[match(dfr1$idschool.i[1],dat$idschool)] <- pred.ii}\cr
+}{\verb{h <- dfr1$h.min[1]  # h.min
 dfr.i$wgt.h <- dnorm(sqrt(dfr.i$dist),sd=sqrt(h))/
   dnorm(0,sd= sqrt(h)) # w_{ik} bei h.min      
 dfr.i0 <- dfr.i
@@ -284,18 +532,51 @@ mod.ii <- lm(formula=fm,data=dfr.i0,weights=dfr.i0$wgt.h)
 predM <- data.frame(dfr.i[1,paste0(maineff,".i")])    
 names(predM) <- maineff
 pred.ii <- predict(mod.ii, predM) # Schätzwert Schule i
-dat[match(dfr1$idschool.i[1],dat$idschool), "expTWLE.np"] <- pred.ii
+dat$expTWLE.np[match(dfr1$idschool.i[1],dat$idschool)] <- pred.ii
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 16: Durchführung der nichtparametrischen Regression
 }%end Subsection Abschnitt 9.2.5.4: Nichtparametrische Regression
 
 
 \subsection{Abschnitt 9.2.7, Berücksichtigung der Schätzfehler}{
-Der Erwartungsbereich wird nach der im Buch beschriebenen Vorgehensweise bestimmt.
+Der Erwartungsbereich wird nach der im Buch beschriebenen Vorgehensweise
+bestimmt.
+
 \subsection{Listing 17: Bestimmung des Erwartungsbereichs}{
-Bestimmung der Breite des Erwartungsbereichs aller Schulen auf Basis der Ergebnisse der OLS-Regression mit Haupteffekten.
-\verb{
-vv <- "expTWLE.OLS1" # Variablenname
+Bestimmung der Breite des Erwartungsbereichs aller Schulen auf Basis der 
+Ergebnisse der OLS-Regression mit Haupteffekten.
+
+\ifelse{latex}{%start latex
+\code{}\cr
+\code{> vv <- "expTWLE.OLS1" # Variablenname}\cr
+\code{> mm <- "OLS1" # Kurzname des Modells}\cr
+\code{> dfr <- NULL # Ergebnistabelle}\cr
+\code{> # Schleife über alle möglichen Breite von 10 bis 60}\cr
+\code{> for(w in 10:60)\{}\cr
+\code{+   # Variablen für Ergebnisse pro w}\cr
+\code{+   var <- paste0(mm,".pos.eb",w) # Position der Schule}\cr
+\code{+   var.low <- paste0(mm,".eblow",w) # Untere Grenze des EBs}\cr
+\code{+   var.upp <- paste0(mm,".ebupp",w) # Obere Grenze des EBs}\cr
+\code{+   # Berechnen}\cr
+\code{+   dat[,var.low] <- dat[,vv]-w/2 # Untere Grenze des EBs}\cr
+\code{+   dat[,var.upp] <- dat[,vv]+w/2 # Obere Grenze des EBs }\cr
+\code{+   # Position: -1=unterhalb, 0=innerhalb, 1=oberhalb des EBs }\cr
+\code{+   dat[,var] <- -1*(dat$TWLE < dat[,var.low]) + 1*(dat$TWLE > dat[,var.upp])}\cr
+\code{+   # Verteilung der Schulpositionen}\cr
+\code{+   tmp <- data.frame(t(matrix(prop.table(table(dat[,var])))))}\cr
+\code{+   names(tmp) <- c("unterhalb","innerhalb","oberhalb")}\cr
+\code{+   tmp <- data.frame("ModellxBereich"=var,tmp); dfr <- rbind(dfr,tmp) \}}\cr
+\code{> }\cr
+\code{> # Abweichung zur Wunschverteilung 25-50-25 }\cr
+\code{> dfr1 <- dfr }\cr
+\code{> dfr1[,c(2,4)] <- (dfr1[,c(2,4)] - .25)^2 }\cr
+\code{> dfr1[,3] <- (dfr1[,3] - .5)^2 }\cr
+\code{> dfr1$sumquare <- rowSums(dfr1[,-1]) }\cr
+\code{> # Auswahl markieren }\cr
+\code{> dfr$Auswahl <- 1*(dfr1$sumquare == min(dfr1$sumquare) )}\cr
+}{\verb{vv <- "expTWLE.OLS1" # Variablenname
 mm <- "OLS1" # Kurzname des Modells
 dfr <- NULL # Ergebnistabelle
 # Schleife über alle möglichen Breite von 10 bis 60
@@ -322,6 +603,8 @@ dfr1$sumquare <- rowSums(dfr1[,-1])
 # Auswahl markieren 
 dfr$Auswahl <- 1*(dfr1$sumquare == min(dfr1$sumquare) )
 }
+}%end else / end ifelse latex
+
 }%end Subsection Listing 17: Bestimmung des Erwartungsbereichs
 }%end Subsection Abschnitt 9.2.7, Berücksichtigung der Schätzfehler
 }%end Details
@@ -365,6 +648,13 @@ covainteraction <- function(dat,covas,nchar){
 data(datenKapitel09)
 dat <- datenKapitel09
 
+# Platzhalter für Leistungsschätzwerte aller Modelle
+dat$expTWLE.OLS1 <- NA
+dat$expTWLE.OLS2 <- NA
+dat$expTWLE.Lasso1 <- NA
+dat$expTWLE.Lasso2 <- NA
+dat$expTWLE.np <- NA
+
 \dontrun{
 ## -------------------------------------------------------------
 ## Abschnitt 9.2.5, Umsetzung in R
@@ -377,16 +667,16 @@ dat <- datenKapitel09
 
 vars <- c("groesse","female","mig","sozstat")
 zvars <- paste0("z",vars)
-dat[,zvars] <- scale(dat[,vars],scale = T)
+dat[,zvars] <- scale(dat[,vars],scale = TRUE)
 
 # -------------------------------------------------------------
 # Abschnitt 9.2.5.1, Listing 2: 
 #
 
 # Interaktionen bilden, z-standardisieren  
-dat1 <- covainteraction(dat = dat,covas = zvars,nchar = 4)
+dat1 <- LSAmitR::covainteraction(dat = dat,covas = zvars,nchar = 4)
 intvars <- names(dat1) # Interaktionsvariablen
-dat1[,intvars] <- scale(dat1[,intvars],scale = T)
+dat1[,intvars] <- scale(dat1[,intvars],scale = TRUE)
 dat <- cbind(dat,dat1)
 
 # -------------------------------------------------------------
@@ -456,7 +746,7 @@ names(dat.i) <- paste0(names(dat.i),".i")
 # Daten der Vergleichsschulen
 dat.vgl <- dat[pos[-i],c("idschool","TWLE",maineff)]
 index.vgl <- match(dat.vgl$idschool,schools)
-# Daten zusammenfuegen
+# Daten zusammenfügen
 dfr.i <- data.frame("index.i"=i,dat.i,"index.vgl"=index.vgl,
                     dat.vgl, row.names=NULL)
 # Distanz zur Schule i
@@ -488,7 +778,7 @@ n <- nrow(dfr.i)
 sumw <- 0*H # Vektor w_{ik} initiieren, h in H
 av <- "TWLE"
 dfr0.i <- dfr.i[,c("idschool",av)]
-# Schleife ueber alle h-Werte
+# Schleife über alle h-Werte
 for (ll in 1:V1 ){
   h <- H[ll]
   # Gewicht w_{ik} bei h
@@ -516,7 +806,7 @@ dfr1 <- data.frame("idschool.i"=dfr.i$idschool.i[1],"h"=H )
 #
 
 library(kerdiest)
-hAL <- ALbw("n",dfr.i$dist) # Plug-in Bandweite
+hAL <- kerdiest::ALbw("n",dfr.i$dist) # Plug-in Bandweite
 dfr.i$cross.h <- hAL
 dfr.i$crosswgt <- dnorm( sqrt(dfr.i$dist), mean=0, sd = sqrt(hAL) ) 
 # Kreuzvalidierungskriterium CVh
@@ -585,15 +875,13 @@ fm.ols1 <- paste0("TWLE ~ ",paste(maineff,collapse=" + "))
 fm.ols1 <- as.formula(fm.ols1)
 
 # Modellgleichung mit Haupteffekten ohne zgroesse
-fm.ols1a <- paste0("TWLE ~ ",paste(setdiff(maineff,c("zgroesse")),collapse=" + "))
+fm.ols1a <- paste0("TWLE ~ ",paste(setdiff(maineff,c("zgroesse")),
+                                   collapse=" + "))
 fm.ols1a <- as.formula(fm.ols1a)
 
 # Modellgleichung mit Haupt- und Interaktionseffekten
 fm.ols2 <- paste0("TWLE ~ ",paste(alleff,collapse=" + "))
 fm.ols2 <- as.formula(fm.ols2)
-
-# Leistungsschätzwerte der 2 OLS-Modelle
-dat$expTWLE.OLS2 <- dat$expTWLE.OLS1 <- NA
 
 # Ergebnistabelle über 4 Strata hinweg vorbereiten
 tab1 <- data.frame("Variable"=c("(Intercept)",maineff))
@@ -622,7 +910,8 @@ for(st in 1:4){
   # Ergebnisse in Tabelle speichern
   par <- summary(ols.mod1)
   tab.s <- data.frame(par$coef,R2=par$r.squared,R2.adj=par$adj.r.squared)
-  names(tab.s) <- paste0("stratum",st,c("_coef","_SE","_t","_p","_R2","_R2.adj"))
+  names(tab.s) <- paste0("stratum",st,
+                         c("_coef","_SE","_t","_p","_R2","_R2.adj"))
   tab1 <- cbind(tab1, tab.s)
   
   # Durchführung OLS-Modell 2
@@ -637,7 +926,8 @@ for(st in 1:4){
   # Ergebnisse in Tabelle speichern
   par <- summary(ols.mod2)
   tab.s <- data.frame(par$coef,R2=par$r.squared,R2.adj=par$adj.r.squared)
-  names(tab.s) <- paste0("stratum",st,c("_coef","_SE","_t","_p","_R2","_R2.adj"))
+  names(tab.s) <- paste0("stratum",st,
+                         c("_coef","_SE","_t","_p","_R2","_R2.adj"))
   tab2 <- cbind(tab2, tab.s) 
   
 }
@@ -753,11 +1043,14 @@ dat$resTWLE.Lasso2 <- dat$TWLE - dat$expTWLE.Lasso2
 # Nichtparametrische Regression
 #
 
+#
+# Achtung: Der nachfolgende Algorithmus benötigt viel Zeit!
+# 
+
 av <- "TWLE" # Abhängige Variable
 dfr3 <- NULL # Ergebnistabelle
 
 # Variable für Leistungsschätzwerte
-dat$expTWLE.np <- NA
 
 # Schleife über 4 Strata
 for(st in 1:4){
@@ -781,7 +1074,7 @@ for(st in 1:4){
     # Variablennamen von dat.i umbenennen
     names(dat.i) <- paste0(names(dat.i),".i")
     
-    # Daten zusammenfuegen
+    # Daten zusammenfügen
     index.vgl <- match(dat.vgl$idschool,schools)
     dfr.i <- data.frame("index.i"=i,dat.i,
                         "index.vgl"=index.vgl,dat.vgl,
@@ -811,7 +1104,7 @@ for(st in 1:4){
     dfr.i <- dfr[ dfr$index.i == i , ]
     n <- nrow(dfr.i)
     
-    # Startwertliste fuer h initiieren
+    # Startwertliste für h initiieren
     d.dist <- max(dfr.i$dist)-min(dfr.i$dist)
     H <- c(seq(d.dist/100,d.dist,length=30),100000)
     V1 <- length(H) # Anzahl der Startwerte in H
@@ -819,7 +1112,7 @@ for(st in 1:4){
     # Startwerte: Summe von w_ik
     sumw <- 0*H
     dfr0.i <- dfr.i[,c("idschool",av)]
-    # Schleife ueber alle h-Werte
+    # Schleife über alle h-Werte
     for (ll in 1:V1 ){
       h <- H[ll]
       # Gewicht w_ik bei h
@@ -845,8 +1138,10 @@ for(st in 1:4){
     
     # Berechnung des Kreuzvalidierungskriteriums
     library(kerdiest)
-    hAL <- ALbw("n",dfr.i$dist) # Plug-in Bandbreite nach Altman ud Leger
-    name <- paste0( "bandwidth_choice_school" , dfr.i$idschool.i[1] ,  "_cross.h_" , round2(hAL,1) )
+    hAL <- kerdiest::ALbw("n",dfr.i$dist) # Plug-in Bandbreite nach Altman und 
+                                          # Leger
+    name <- paste0( "bandwidth_choice_school" , dfr.i$idschool.i[1] ,  
+                     "_cross.h_" , round2(hAL,1) )
     # Regressionsgewichte auf Basis cross.h
     dfr.i$cross.h <- hAL
     dfr.i$crosswgt <- dnorm( sqrt(dfr.i$dist), mean=0, sd = sqrt(hAL) ) 
@@ -877,7 +1172,8 @@ for(st in 1:4){
     h <- dfr1$h.min[1]
     
     # Gewichte anhand h berechnen
-    dfr.i$wgt.h <- dnorm( sqrt( dfr.i$dist ) , sd = sqrt( h) ) / dnorm( 0 , sd = sqrt( h) )     
+    dfr.i$wgt.h <- dnorm( sqrt( dfr.i$dist ) , sd = sqrt( h) ) / 
+                   dnorm( 0 , sd = sqrt( h) )     
     dfr.i0 <- dfr.i
     mod.ii <- lm(formula = fm,data = dfr.i0,weights = dfr.i0$wgt.h)
     
@@ -932,7 +1228,8 @@ table(dfr3$eff_gain > 20)
 dat$resTWLE.np <- dat$TWLE - dat$expTWLE.np
 
 ## -------------------------------------------------------------
-## Abschnitt 9.2.6, Ergebnisse im Vergleich, Ergänzung zum Buch
+## Abschnitt 9.2.6, Ergänzung zum Buch
+## Ergebnisse im Vergleich
 ## -------------------------------------------------------------
 
 # Output-Variablen
@@ -948,12 +1245,14 @@ tab2 <- as.matrix(round2(sqrt(var(dat[,out])),1))
 tab3 <- matrix(NA,lt,lt)
 # Differenzmatrix
 for(ii in 1:(lt-1))
-  for(jj in (ii+1):lt) tab3[ii,jj] <- round2(mean(abs(dat[,out[jj]]-dat[,out[ii]])),1)
+  for(jj in (ii+1):lt) tab3[ii,jj] <- round2(mean(abs(dat[,out[jj]] - 
+                                                      dat[,out[ii]])),1)
 
 tab4 <- matrix(NA,lt,lt)
 # Differenzmatrix
 for(ii in 1:(lt-1))
-  for(jj in (ii+1):lt) tab4[ii,jj] <- round2(sd(abs(dat[,out[jj]]-dat[,out[ii]])),1)
+  for(jj in (ii+1):lt) tab4[ii,jj] <- round2(sd(abs(dat[,out[jj]] - 
+                                                    dat[,out[ii]])),1)
 
 # Ergebnistabelle
 diag(tab) <- diag(tab2)
@@ -1022,14 +1321,17 @@ dfr1$sumquare <- rowSums(dfr1[,-1])
 dfr$Auswahl <- 1*(dfr1$sumquare == min(dfr1$sumquare) )
 
 # -------------------------------------------------------------
-# Abschnitt 9.2.7, Bestimmung des Erwartungsbereichs
-# Ergänzung zum Buch
+# Abschnitt 9.2.7, Ergänzung zum Buch
+# Bestimmung des Erwartungsbereichs
+# 
 
-dat <- dat0
+# Ergebnisse aller Schulen werden aus Ursprungsdatensatz geladen.
+dat <- datenKapitel09 
+
 # Liste der Erwartungswerte-Variablen
 exp.vars <- grep("expTWLE",names(dat),value=T)
 # Modellnamen
-m.vars <- gsub("expTWLE\\.","",exp.vars)
+m.vars <- gsub("expTWLE.","",exp.vars, fixed = TRUE)
 
 # Liste der Ergebnistabelle
 list0 <- list()
@@ -1130,9 +1432,9 @@ for(x in 2:(L+1)) {dfr1[,x] <- dfr[,(L+3)-x];
 names(dfr1)[x] <- names(dfr)[(L+3)-x]}
 
 ###
-plot(x = log(a), y = rep(0,L), xlim = rev(range(log(a))), ylim=c(-20,22), type = "l", 
-     xaxt ="n",
-     xlab = expression(paste(lambda)), ylab="Geschätzte Regressionskoeffizienten")
+plot(x = log(a), y = rep(0,L), xlim = rev(range(log(a))), ylim=c(-20,22), 
+     type = "l", xaxt ="n", xlab = expression(paste(lambda)), 
+     ylab="Geschätzte Regressionskoeffizienten")
 axis(1, at=log(a), labels=a,cex=1)
 
 tmp <- nrow(dfr)
@@ -1177,7 +1479,8 @@ text(x=log(lasso.mod2$lambda.min)-0.3,y = min(lasso.mod2$cvm)-30,
      labels="min(cvm)",cex=1 )
 abline(h = min(lasso.mod2$cvm),lty=2)
 
-text <- expression(paste("Anzahl der Nicht-null-Koeffizienten (",lambda," entsprechend)"))
+text <- expression(paste("Anzahl der Nicht-null-Koeffizienten (",
+                         lambda," entsprechend)"))
 mtext(text=text,side=3,line=3)
 
 
@@ -1190,8 +1493,8 @@ id <- c(1196, 1217)
 par(mai=c(1.2,3,1,.5))
 plot(x=rep(NA,2),y=c(1:2),xlim=c(470,610),yaxt ="n",type="l",
      xlab="Erwartungswerte je nach Modell und Schulleistung",ylab="")
-legend <- c("Schulleistung (TWLE)",paste0("",
-                                          c("OLS1","OLS2","Lasso1","Lasso2","NP"),
+legend <- c("Schulleistung (TWLE)",paste0("", c("OLS1","OLS2","Lasso1",
+                                                "Lasso2","NP"),
                                           "-Modell"))
 axis(2, at=c(seq(1,1.4,0.08),seq(1.6,2,0.08)), las=1,cex=0.7,
      labels=rep(legend,2))

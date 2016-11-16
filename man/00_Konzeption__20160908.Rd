@@ -1,16 +1,16 @@
 %% ----------------------------------------------------------------------------
 %% Header
-\name{Kapitel 0}
+\name{Kapitel  0}
 \alias{Kapitel 0}
 \encoding{UTF-8}
-\title{Kapitel 0: Testkonzeption: das Konzept der österreichischen 
-Bildungsstandards-Überprüfung}
+\title{Kapitel 0: Konzeption der Ueberpruefung der Bildungsstandards in 
+Oesterreich}
 
 \description{
-Das ist die Nutzerseite zum Kapitel 0, Testkonzeption: das Konzept der 
-österreichischen Bildungsstandards-Überprüfung, im Herausgeberband 
-\emph{Large-Scale Assessment mit \R}:  Methodische Grundlagen der österreichischen 
-Bildungsstandard-Überprüfung. 
+Das ist die Nutzerseite zum Kapitel 0, \emph{Konzeption der Überprüfung der 
+Bildungsstandards in Österreich}, im Herausgeberband Large-Scale Assessment mit 
+\R: Methodische Grundlagen der österreichischen 
+Bildungsstandardüberprüfung. 
 Hier werden die im Kapitel verwendeten \R-Syntaxen zur Unterstützung für 
 Leser/innen kommentiert, dokumentiert und gegebenefalls erweitert.
 }
@@ -18,11 +18,11 @@ Leser/innen kommentiert, dokumentiert und gegebenefalls erweitert.
 %% ----------------------------------------------------------------------------
 %% Intermediate Deklarationes
 \references{
-  Breit, S., Schreiner, C. & Fellinger, R. (2016). Testkonzeption: das Konzept 
-  der österreichischen Bildungsstandards-Überprüfung. In C. Schreiner 
-  & S. Breit (Hrsg.): \emph{Large-Scale Assessment mit \R}:  Methodische Grundlagen 
-  der österreichischen Bildungsstandard-Überprüfung (pp. xx-yy). Wien: facultas
-  wuv.
+  Schreiner, C. & Breit, S. (2016). Konzeption der Überprüfung 
+  der Bildungsstandards in Österreich.   
+  In S. Breit & C. Schreiner (Hrsg.), \emph{Large-Scale Assessment mit \R:  
+  Methodische Grundlagen der österreichischen Bildungsstandardüberprüfung} 
+  (pp. 1--20). Wien: facultas.
 }
 
 % \note{
@@ -30,7 +30,7 @@ Leser/innen kommentiert, dokumentiert und gegebenefalls erweitert.
 % }
 
 \author{
-  Simone Breit, Claudia Schreiner und Robert Fellinger
+  Claudia Schreiner und Simone Breit
 }
 
 \seealso{

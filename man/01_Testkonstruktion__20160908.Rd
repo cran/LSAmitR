@@ -1,27 +1,27 @@
 %% ----------------------------------------------------------------------------
 %% Header
-\name{Kapitel 1}
+\name{Kapitel  1}
 \alias{Kapitel 1}
 \encoding{UTF-8}
 \title{Kapitel 1: Testkonstruktion}
 
 \description{
-Das ist die Nutzerseite zum Kapitel 1, Testkonstruktion, im Herausgeberband 
-\emph{Large-Scale Assessment mit \R}:  Methodische Grundlagen der österreichischen 
-Bildungsstandard-Überprüfung.\cr
+Das ist die Nutzerseite zum Kapitel 1, \emph{Testkonstruktion}, im 
+Herausgeberband Large-Scale Assessment mit \R: Methodische Grundlagen der 
+österreichischen Bildungsstandardüberprüfung. 
 Im Abschnitt \strong{Details} werden die im Kapitel verwendeten \R-Syntaxen zur 
-Unterstützung für Leser/innen kommentiert und dokumentiert. Im Abschnitt
-\strong{Examples} werden die \R-Syntaxen des Kapitels vollständig widergegeben und 
-gegebenefalls erweitert. 
+Unterstützung für Leser/innen kommentiert und dokumentiert. 
+Im Abschnitt \strong{Examples} werden die \R-Syntaxen des Kapitels vollständig 
+wiedergegeben und gegebenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------
 %% Intermediate Deklarationes
 \references{
-  Itzlinger-Bruneforth, U., Kuhn, T.-K. & Kiefer, T. (2016). Testkonstruktion. 
-  In C. Schreiner & S. Breit (Hrsg.): \emph{Large-Scale Assessment mit \R}:  
-  Methodische Grundlagen der österreichischen Bildungsstandard-Überprüfung 
-  (pp. xx-yy). Wien: facultas wuv.
+  Itzlinger-Bruneforth, U., Kuhn, J.-T. & Kiefer, T. (2016). Testkonstruktion. 
+  In S. Breit & C. Schreiner (Hrsg.), \emph{Large-Scale Assessment mit \R:  
+  Methodische Grundlagen der österreichischen Bildungsstandardüberprüfung} 
+  (pp. 21--50). Wien: facultas.
 }
 
 % \note{
@@ -33,39 +33,41 @@ gegebenefalls erweitert.
 }
 
 \seealso{
+%Verweis zu den Daten im Kapitel
+Zu \code{\link{datenKapitel01}}, den im Kapitel verwendeten Daten.\cr
 %Verweis zum nächsten und zum vorigen Kapitel
-Zurück zu \code{\link{Kapitel 0}}, Testkonzeption.\cr
+Zurück zu \code{\link{Kapitel 0}}, Konzeption.\cr
 Zu \code{\link{Kapitel 2}}, Stichprobenziehung.\cr
 Zur \code{\link[LSAmitR:LSAmitR-package]{Übersicht}}.
-%Verweis zu Hilfeseiten eventuell zusätzlicher R-Funktionen. (\cr nach Übersicht einfügen)
+% Verweis zu Hilfeseiten eventuell zusätzlicher R-Funktionen. (\cr nach 
+% Übersicht einfügen)
 }
 
-%% ----------------------------------------------------------------------------
-%% Details
-\details{
-\subsection{Vorbereitungen}{
-..
-\verb{
-..
-}
-}%end Subsection Vorbereitungen
-
-
-\subsection{Abschnitt x.1: KTT}{
-\subsection{Listing 1: Skalierung der Rekodierten Daten}{
-..
-\verb{
-..
-}
-}%end Subsection Listing 1: Skalierung der Rekodierten Daten
-}%end Subsection Abschnitt x.1: KTT
-}%end Details
+% %% ----------------------------------------------------------------------------
+% %% Details
+% \details{
+% \subsection{Vorbereitungen}{
+% ..
+% \verb{
+% ..
+% }
+% }%end Subsection Vorbereitungen
+% 
+% 
+% \subsection{Abschnitt x.1: KTT}{
+% \subsection{Listing 1: Skalierung der Rekodierten Daten}{
+% ..
+% \verb{
+% ..
+% }
+% }%end Subsection Listing 1: Skalierung der Rekodierten Daten
+% }%end Subsection Abschnitt x.1: KTT
+% }%end Details
 
 %% ----------------------------------------------------------------------------
 %% Examples
 \examples{
 library(TAM)
-library(sirt)
 library(miceadds)
 library(irr)
 library(gtools)
@@ -95,12 +97,13 @@ dat[items] <- recode(dat[items], "9=0;8=0")
 dat.ib <- pilotItems
 items.dich <- dat.ib$item[dat.ib$maxScore == 1]
 
-# Berechne erreichbaren Punkte je TH
+# Berechne erreichbare Punkte je TH
 # aus Maximalscore je Item in Itembank
 ind <- match(items, dat.ib$item)
 testlets.ind <- ! items \%in\% items.dich
 ind[testlets.ind] <- match(items[testlets.ind], dat.ib$testlet)
-max.form <- 1 * (!is.na(dat[, items])) \%*\% dat.ib$maxScore[ind]
+maxscores <- dat.ib$maxScore[ind]
+max.form <- 1 * (!is.na(dat[, items])) \%*\% maxscores
 
 # Erzielter Score ist der Summenscore dividiert durch 
 # Maximalscore
@@ -216,7 +219,7 @@ ctt.roh[ist.distraktor & ist.pos.korr & ist.bearb, vars]
 #
 
 # Ausgabe
-head(ctt.roh[ist.distraktor & ctt.roh$RelFreq < 0.05, vars])
+head(ctt.roh[ist.distraktor & ctt.roh$RelFreq < 0.05, vars],4)
 
 # -------------------------------------------------------------
 # Abschnitt 1.5.5, Listing 8: Kodierbarkeit
@@ -225,7 +228,7 @@ head(ctt.roh[ist.distraktor & ctt.roh$RelFreq < 0.05, vars])
 library(irr)
 dat.mm <- pilotMM
 
-# Bestimme Modus der Berechnung: bei 3 Codern
+# Bestimme Modus der Berechnung: bei 3 Kodierern
 # gibt es 3 paarweise Vergleiche
 vars <- grep("Coder", colnames(dat.mm))
 n.vergleiche <- choose(length(vars), 2)

@@ -29,13 +29,15 @@ quintfunct(X,w)
 }
 
 \arguments{
-  \item{offset}{to fill}
-  \item{n.str}{to fill}
-  \item{dat}{to fill}
-  \item{covas}{to fill}
-  \item{nchar}{to fill}
-  \item{X}{to fill}
-  \item{w}{to fill}
+  \item{offset}{siehe \code{\link{Kapitel 2}}}
+  \item{n.str}{siehe \code{\link{Kapitel 2}}}
+  \item{dat}{siehe \code{\link{Kapitel 9}}}
+  \item{covas}{siehe \code{\link{Kapitel 9}}}
+  \item{nchar}{siehe \code{\link{Kapitel 9}}}
+  \item{X}{\code{quintfunct} ist eine Hilfsfunktion, die nicht für die weitere 
+  Verwendung gedacht ist.}
+  \item{w}{\code{quintfunct} ist eine Hilfsfunktion, die nicht für die weitere 
+  Verwendung gedacht ist.}
 }
 
 % \references{

@@ -6,22 +6,22 @@
 \title{Kapitel 10: Reporting und Analysen}
 
 \description{
-Das ist die Nutzerseite zum Kapitel 10, Reporting und Analysen, im 
-Herausgeberband \emph{Large-Scale Assessment mit \R}: Methodische Grundlagen der 
-österreichischen Bildungsstandard-Überprüfung.\cr
+Das ist die Nutzerseite zum Kapitel 10, \emph{Reporting und Analysen}, im 
+Herausgeberband Large-Scale Assessment mit \R: Methodische 
+Grundlagen der österreichischen Bildungsstandardüberprüfung. 
 Im Abschnitt \strong{Details} werden die im Kapitel verwendeten \R-Syntaxen zur 
-Unterstützung für Leser/innen kommentiert und dokumentiert. Im Abschnitt
-\strong{Examples} werden die \R-Syntaxen des Kapitels vollständig widergegeben und 
-gegebenefalls erweitert. 
+Unterstützung für Leser/innen kommentiert und dokumentiert. 
+Im Abschnitt \strong{Examples} werden die \R-Syntaxen des Kapitels vollständig 
+wiedergegeben und gegebenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------
 %% Intermediate Deklarationes
 \references{
   Bruneforth, M., Oberwimmer, K. & Robitzsch, A. (2016). Reporting und Analysen. 
-  In C. Schreiner & S. Breit (Hrsg.): \emph{Large-Scale Assessment 
-  mit \R}: Methodische Grundlagen der österreichischen 
-  Bildungsstandard-Überprüfung (pp. xx-yy). Wien: facultas wuv.
+  In S. Breit & C. Schreiner (Hrsg.), \emph{Large-Scale Assessment mit \R:  
+  Methodische Grundlagen der österreichischen Bildungsstandardüberprüfung} 
+  (pp. 333--362). Wien: facultas.
 }
 
 % \note{
@@ -33,33 +33,36 @@ gegebenefalls erweitert.
 }
 
 \seealso{
+%Verweis zu den Daten im Kapitel
+Zu \code{\link{datenKapitel10}}, den im Kapitel verwendeten Daten.\cr
 Zurück zu \code{\link{Kapitel 9}}, Fairer Vergleich in der Rückmeldung.\cr
 Zu \code{\link{Kapitel 11}}, Aspekte der Validierung.\cr
 Zur \code{\link[LSAmitR:LSAmitR-package]{Übersicht}}.
-%Verweis zu Hilfeseiten eventuell zusätzlicher R-Funktionen. (\cr nach Übersicht einfügen)
+%Verweis zu Hilfeseiten eventuell zusätzlicher R-Funktionen. (\cr nach 
+%Übersicht einfügen)
 %Zur Hilfeseite von \code{\link[TAM:TAM-package]{TAM}}
 }
 
-%% ----------------------------------------------------------------------------
-%% Details
-\details{
-\subsection{Vorbereitungen}{
-..
-\verb{
-..
-}
-}%end Subsection Vorbereitungen
-
-
-\subsection{Abschnitt x.1: KTT}{
-\subsection{Listing 1: Skalierung der Rekodierten Daten}{
-..
-\verb{
-..
-}
-}%end Subsection Listing 1: Skalierung der Rekodierten Daten
-}%end Subsection Abschnitt x.1: KTT
-}%end Details
+% %% ----------------------------------------------------------------------------
+% %% Details
+% \details{
+% \subsection{Vorbereitungen}{
+% ..
+% \verb{
+% ..
+% }
+% }%end Subsection Vorbereitungen
+% 
+% 
+% \subsection{Abschnitt x.1: KTT}{
+% \subsection{Listing 1: Skalierung der Rekodierten Daten}{
+% ..
+% \verb{
+% ..
+% }
+% }%end Subsection Listing 1: Skalierung der Rekodierten Daten
+% }%end Subsection Abschnitt x.1: KTT
+% }%end Details
 
 %% ----------------------------------------------------------------------------
 %% Examples
@@ -69,8 +72,9 @@ library(matrixStats)
 
 data(datenKapitel10)
 dat <- datenKapitel10$dat
+dat.roh <- datenKapitel10$dat.roh
 dat.schule <- datenKapitel10$dat.schule
-
+dat.schule.roh <- datenKapitel10$dat.schule.roh
 
 \dontrun{
 ## -------------------------------------------------------------
@@ -171,7 +175,6 @@ dat.tmp <- dat
 #  im Datensatz dat1; mit Replikationsdesign im Datensatz dat2.
 
 # replicate weights für Schüler/innen als Datenmatrix einlesen 
-dat <- list()
 dat.repwgts <- read.csv2(file = "e8__schueler_repwgts.csv")
 # replicate weights an Schülerdaten mergen
 for (ii in 1:10) {
@@ -298,9 +301,9 @@ anwenderfct.weightedMad <- function(X,w)
 }
 
 wgt.Mad <- BIFIE.by(BIFIEobj = dat,
-                     vars = "HISEI",
+                     vars =  c("HISEI", "E8RPV"),
                      userfct = anwenderfct.weightedMad,
-                     userparnames = "wMad")
+                     userparnames = c("wMadHISEI", "wMadE8RPV"))
 summary(wgt.Mad)
 
 ## -------------------------------------------------------------
@@ -437,10 +440,11 @@ res1 <- BIFIE.linreg(BIFIEobj = dat, formula = E8RPV ~ female)
 # Alternativer Aufruf mit identischem Resultat
 res1 <- BIFIE.linreg(BIFIEobj = dat,dep = "E8RPV", 
                      pre = c("one","female"))
-# Ausgabe
+                     
+# Vollständige Ausgabe
 summary(res1)
 
-# Reduzierte Ausgabe der Ergebnisse:
+# Reduzierte Ausgabe der Ergebnisse
 res1_short <- res1$stat[res1$stat$parameter == "b" &
             res1$stat$var == "female",c("est","SE")]
 colnames(res1_short) <- c("Geschlechterunterschied","SE")

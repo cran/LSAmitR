@@ -1,27 +1,27 @@
 %% ----------------------------------------------------------------------------
 %% Header
-\name{Kapitel 5}
+\name{Kapitel  5}
 \alias{Kapitel 5}
 \encoding{UTF-8}
 \title{Kapitel 5: Testdesign}
 
 \description{
-Das ist die Nutzerseite zum Kapitel 5, Testdesign, im Herausgeberband 
-\emph{Large-Scale Assessment mit \R}:  Methodische Grundlagen der österreichischen 
-Bildungsstandard-Überprüfung.\cr
+Das ist die Nutzerseite zum Kapitel 5, \emph{Testdesign}, im Herausgeberband 
+Large-Scale Assessment mit \R: Methodische 
+Grundlagen der österreichischen Bildungsstandardüberprüfung. 
 Im Abschnitt \strong{Details} werden die im Kapitel verwendeten \R-Syntaxen zur 
-Unterstützung für Leser/innen kommentiert und dokumentiert. Im Abschnitt
-\strong{Examples} werden die \R-Syntaxen des Kapitels vollständig widergegeben und 
-gegebenefalls erweitert. 
+Unterstützung für Leser/innen kommentiert und dokumentiert. 
+Im Abschnitt \strong{Examples} werden die \R-Syntaxen des Kapitels vollständig 
+wiedergegeben und gegebenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------
 %% Intermediate Deklarationes
 \references{
-  Kiefer, T., Kuhn, J.-T. & Fellinger, R. (2016). Testdesign. In C. Schreiner & 
-  S. Breit (Hrsg.): \emph{Large-Scale Assessment mit \R}: Methodische Grundlagen 
-  der österreichischen Bildungsstandard-Überprüfung (pp. xx-yy). Wien: facultas 
-  wuv.
+  Kiefer, T., Kuhn, J.-T. & Fellinger, R. (2016). Testdesign. 
+  In S. Breit & C. Schreiner (Hrsg.), \emph{Large-Scale Assessment mit \R:  
+  Methodische Grundlagen der österreichischen Bildungsstandardüberprüfung} 
+  (pp. 149--184). Wien: facultas.
 }
 
 % \note{
@@ -38,30 +38,31 @@ Zurück zu \code{\link{Kapitel 4}}, Differenzielles Itemfunktionieren in
 Subgruppen.\cr
 Zu \code{\link{Kapitel 6}}, Skalierung und Linking.\cr
 Zur \code{\link[LSAmitR:LSAmitR-package]{Übersicht}}.
-%Verweis zu Hilfeseiten eventuell zusätzlicher R-Funktionen. (\cr nach Übersicht einfügen)
+%Verweis zu Hilfeseiten eventuell zusätzlicher R-Funktionen. (\cr nach 
+%Übersicht einfügen)
 %Zur Hilfeseite von fit.r \code{\link{fit.r}}
 }
 
-%% ----------------------------------------------------------------------------
-%% Details
-\details{
-\subsection{Vorbereitungen}{
-..
-\verb{
-..
-}
-}%end Subsection Vorbereitungen
-
-
-\subsection{Abschnitt x.1: KTT}{
-\subsection{Listing 1: Skalierung der Rekodierten Daten}{
-..
-\verb{
-..
-}
-}%end Subsection Listing 1: Skalierung der Rekodierten Daten
-}%end Subsection Abschnitt x.1: KTT
-}%end Details
+% %% ----------------------------------------------------------------------------
+% %% Details
+% \details{
+% \subsection{Vorbereitungen}{
+% ..
+% \verb{
+% ..
+% }
+% }%end Subsection Vorbereitungen
+% 
+% 
+% \subsection{Abschnitt x.1: KTT}{
+% \subsection{Listing 1: Skalierung der Rekodierten Daten}{
+% ..
+% \verb{
+% ..
+% }
+% }%end Subsection Listing 1: Skalierung der Rekodierten Daten
+% }%end Subsection Abschnitt x.1: KTT
+% }%end Details
 
 %% ----------------------------------------------------------------------------
 %% Examples
@@ -267,7 +268,10 @@ if(behalte){
 # -------------------------------------------------------------
 # Abschnitt 5.3.2, Listing 9a: Ergänzung zum Buch
 # 
-#
+
+# Achtung: Algorithmus benötigt einige Zeit.
+# Je nach Wahl der Lauf-Parameter in Abschnitt 5.3.2, Listing 7, kann der 
+# folgende Prozess bis zu ein paar Stunden dauern.
 
 start <- Sys.time()
 best <- list(inc, fitInc)
@@ -446,8 +450,12 @@ child[c(raus, rein), thisBl] <- c(0, 1)
 
 # -------------------------------------------------------------
 # Abschnitt 5.3.3, Listing 8a: Ergänzung zum Buch
+#                              Vollständige Umsetzung
 # 
-#
+
+# Achtung: Algorithmus benötigt einige Zeit.
+# Je nach Wahl der Lauf-Parameter im nachfolgenden Abschnitt, kann der 
+# Prozess bis zu einigen Stunden dauern.
 
 fit <- function(des, dat.ib, dat.bib){
   desTh <- des[, dat.bib[, 1]] + des[, dat.bib[, 2]] + 
