@@ -50,7 +50,7 @@ Robert Fellinger [aut]
 Maintainer: Thomas Kiefer <t.kiefer@bifie.at>
 }
 \references{
-Breit, S. & Schreiner, C. [HG.] (2016). \emph{Large-Scale Assessment mit R:
+Breit, S. & Schreiner, C. [HG.] (2016). \emph{Large-Scale Assessment mit \R:
 Methodische Grundlagen der österreichischen Bildungsstandardüberprüfung}. 
 Wien: facultas.
 }

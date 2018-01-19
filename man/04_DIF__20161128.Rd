@@ -12,7 +12,7 @@ Grundlagen der österreichischen Bildungsstandardüberprüfung.
 Im Abschnitt \strong{Details} werden die im Kapitel verwendeten \R-Syntaxen zur 
 Unterstützung für Leser/innen kommentiert und dokumentiert. 
 Im Abschnitt \strong{Examples} werden die \R-Syntaxen des Kapitels vollständig 
-wiedergegeben und gegebenfalls erweitert.
+wiedergegeben und gegebenenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------

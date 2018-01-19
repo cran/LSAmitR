@@ -12,7 +12,7 @@ Grundlagen der österreichischen Bildungsstandardüberprüfung.
 Im Abschnitt \strong{Details} werden die im Kapitel verwendeten \R-Syntaxen zur 
 Unterstützung für Leser/innen kommentiert und dokumentiert. 
 Im Abschnitt \strong{Examples} werden die \R-Syntaxen des Kapitels vollständig 
-wiedergegeben und gegebenfalls erweitert.
+wiedergegeben und gegebenenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------
@@ -475,7 +475,7 @@ erhalten.
 Dazu werden zuerst nur Paare gleicher Rater ausgewählt, somit wird die 
 aggregierte Q3-Statistik nur Rater-spezifisch berechnet. 
 Das Objekt \code{rater.q3} beinhaltet eine Zeile pro Rater x Item Kombination. 
-Kombinationen ergeben sich nur für einen Rater nicht zwischen unterschiedlichen 
+Kombinationen ergeben sich nur für einen Rater, nicht zwischen unterschiedlichen 
 Ratern.
 
 Anschließend kann man mit \code{aggregate()} separat über Rater und 
@@ -608,7 +608,7 @@ summary(mod.vk)
 \subsection{Listing 1a (Ergänzung zum Buch): Summary-Funktion für 
 Varianzkomponenten}{
 
-Wir generieren eine Funktion \code{summary.VarComp()} die den Output des 
+Wir generieren eine Funktion \code{summary.VarComp()}, die den Output des 
 Modells \code{mod.vk} in einen ansprechenden \code{data.frame} schreibt. 
 Hier werden auch die prozentualen Anteile der Varianzkomponenten berechnet.
 
@@ -775,7 +775,7 @@ Parameterschätzungen von verschiedenen Variablen restringiert bzw. gleichstellt
 (z.B. wird für die Within-Varianz von \code{TA} über beide Rater nur ein 
 Parameter geschätzt, nämlich \code{Vta_R12}). 
 Die ICC wird für jede Dimension separat direkt im Modell spezifiziert, dies 
-geschieht durch abgleitete Variablen mit der Schreibweise 
+geschieht durch abgeleitete Variablen mit der Schreibweise 
 \code{Variable := Berechnung}. 
 Die Modellspezifikation und der Aufruf der Funktion \code{sem()} ist wie folgt 
 definiert:
@@ -940,12 +940,12 @@ Wir setzen die Modelle separat in TAM um und lassen uns mit \code{summary()}
 die Ergebnisse anzeigen.
 Einen direkten Zugriff auf die geschätzen Parameter bekommt man mit 
 \code{mod$xsi.facets}. 
-Dabei sieht man, dass im Modell 4 keine generalized items gebildet werden da 
+Dabei sieht man, dass im Modell 4 keine generalized items gebildet werden, da 
 hier kein Interaktionsterm vorkommt. 
 Den Modellvergleich machen wir mit \code{IRT.compareModels(mod3, mod4)}. 
 Modell 3 weist hier kleinere AIC-Werte auf und scheint etwas besser auf die 
 Daten zu passen als Modell 4. 
-Dies zeigt auch der Likelihood-Ratio Test demnach sich durch das Hinzufügen von 
+Dies zeigt auch der Likelihood-Ratio Test, demnach sich durch das Hinzufügen von 
 Parametern die Modellpassung verbessert.
 
 \ifelse{latex}{%start latex
@@ -1047,8 +1047,8 @@ im Buchkapitel um.
 Dabei verändern wir die Anzahl der möglichen Rater durch 
 \code{n.r <- c(2,10,15)}. 
 Der Phi-Koeffizient kann laut Gleichung 6.9 und 6.10 berechnet werden. 
-Die Ergebnisse zeigen einen prozentuellen Anteile der Interaktion Person und 
-Rater von ca. 15\%, diese scheint auf Halo-Effekte hinzuweisen.
+Die Ergebnisse zeigen einen prozentuellen Anteil der Interaktion Person und 
+Rater von ca. 15\%, dieser scheint auf Halo-Effekte hinzuweisen.
 
 \ifelse{latex}{%start latex
 \code{}\cr

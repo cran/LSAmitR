@@ -12,7 +12,7 @@ Grundlagen der österreichischen Bildungsstandardüberprüfung.
 Im Abschnitt \strong{Details} werden die im Kapitel verwendeten \R-Syntaxen zur 
 Unterstützung für Leser/innen kommentiert und dokumentiert. 
 Im Abschnitt \strong{Examples} werden die \R-Syntaxen des Kapitels vollständig 
-wiedergegeben und gegebenfalls erweitert.
+wiedergegeben und gegebenenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------
@@ -338,10 +338,16 @@ for(ii in 1:length(maineff)){
 
 }%end Subsection Listing 9: Distanzberechnung
 
-\subsection{Listing 10: H initiieren}{
-Die Gewichte w_{ik} für jedes Paar (i, k) von Schulen werden mithilfe der 
+
+
+\subsection{Listing 10: H initiieren}{ 
+
+\eqn{p(x) = \frac{\lambda^x e^{-\lambda}}{x!}}{%
+p(x) = \lambda^x exp(-\lambda)/x!}.
+
+Die Gewichte \eqn{w_{ik}} für jedes Paar (i, k) von Schulen werden mithilfe der 
 Distanz, der Gauß’schen Kernfunktion (\code{dnorm}) als Transformationsfunktion
-sowie einer schulspezifischen Bandweite h_i berechnet. Die Auswahl des optimalen
+sowie einer schulspezifischen Bandweite \eqn{h_i} berechnet. Die Auswahl des optimalen
 Werts \eqn{\hat{h_i}} für jede Schule i erfolgt nach Vieu (1991). Zunächst wird
 ein Vektor \code{H} so gewählt, dass der optimale Wert \eqn{\hat{h_i}} größer 
 als der kleinste und kleiner als der größte Wert in \code{H} ausfällt. 
@@ -371,7 +377,7 @@ n <- nrow(dfr.i)
 
 \subsection{Listing 11: Leave-One-Out-Schätzer der jeweiligen Vergleichsschule k
 nach h in H}{
-Auf Basis aller Werte in \code{H} und dem jeweils entsprechenden Gewicht w_{ik}
+Auf Basis aller Werte in \code{H} und dem jeweils entsprechenden Gewicht \eqn{w_{ik}}
 (\code{wgt.h}) werden die Leave-One-Out-Schätzer der jeweiligen Vergleichsschule
 (\code{pred.k}) berechnet.
 
@@ -461,7 +467,7 @@ for (ll in 1:V1){
 
 }%end Subsection Listing 12: Kreuzvalidierungskriterium nach h in H
 
-\subsection{Listing 13: Bestimmung optimales Wertes von h}{
+\subsection{Listing 13: Bestimmung des optimalen Wertes von h}{
 Der optimale Wert von h in \code{H} (\code{h.min}) entspricht dem mit dem 
 kleinsten resultierenden \code{CVh}.
 
@@ -553,7 +559,7 @@ Ergebnisse der OLS-Regression mit Haupteffekten.
 \code{> vv <- "expTWLE.OLS1" # Variablenname}\cr
 \code{> mm <- "OLS1" # Kurzname des Modells}\cr
 \code{> dfr <- NULL # Ergebnistabelle}\cr
-\code{> # Schleife über alle möglichen Breite von 10 bis 60}\cr
+\code{> # Schleife über mögliche Breite von 10 bis 60}\cr
 \code{> for(w in 10:60)\{}\cr
 \code{+   # Variablen für Ergebnisse pro w}\cr
 \code{+   var <- paste0(mm,".pos.eb",w) # Position der Schule}\cr

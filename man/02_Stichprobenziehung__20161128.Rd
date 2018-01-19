@@ -12,7 +12,7 @@ Herausgeberband Large-Scale Assessment mit \R: Methodische Grundlagen der
 Im Abschnitt \strong{Details} werden die im Kapitel verwendeten \R-Syntaxen zur 
 Unterstützung für Leser/innen kommentiert und dokumentiert. 
 Im Abschnitt \strong{Examples} werden die \R-Syntaxen des Kapitels vollständig 
-wiedergegeben und gegebenfalls erweitert.
+wiedergegeben und gegebenenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------
@@ -422,7 +422,7 @@ schueler$NormStudwgt <-
 \subsection{Abschnitt 5.3: Anwendung per Jackknife-Repeated-Replication, 
 Listing 1}{
 
-Die im Folgenden genutzte Hilfsfunktion zones.within.stratum erzeugt ab einem 
+Die im Folgenden genutzte Hilfsfunktion \code{zones.within.stratum} erzeugt ab einem 
 Offset einen Vektor mit jeweils doppelt vorkommenden IDs zur Bildung der 
 Jackknife-Zonen.
 Nachdem die Schulliste zunächst auf die gezogenen Schulen und nach expliziten 

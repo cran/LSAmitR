@@ -32,7 +32,7 @@ Für die Verwendung der Daten, siehe \code{\link{Kapitel 10}}.
 }	
 
 \format{
-\code{datenKapitel10} ist eine Liste mit den vier Elementen Unterlisten, 
+\code{datenKapitel10} ist eine Liste mit den vier Elementen, 
 \code{dat}, \code{dat.roh}, \code{dat.schule} und \code{dat.schule.roh}.\cr
 Die  Elemente \code{dat} und \code{dat.schule} enthalten jeweils zehn imputierte 
 Datensätze (vgl. Kapitel 8, \emph{Fehlende Daten und Plausible Values}, im 
@@ -162,8 +162,8 @@ partiell-synthetische) Daten!
 \ifelse{latex}{%start latex
 \itemize{
 \item \code{idschool}: Schulenidentifikator.
-\item \code{Schultyp}: Schultyp (\code{AHS} allgemeinbildenden höhere Schule, bzw. 
-\item \code{AHS} = allgemeinbildenden Pflichtschule).
+\item \code{Schultyp}: Schultyp (\code{AHS} = allgemeinbildende höhere Schule, 
+bzw. \code{APS} = allgemeinbildende Pflichtschule).
 \item \code{Strata}: Stratum der Schule. (\code{1:4} = Stratum 1 bis Stratum 4, 
 für eine genauere Beschreibung der Strata; siehe Kapitel 
 2 im Band).
@@ -180,14 +180,14 @@ Schulgröße (vgl.\cr https://www.bifie.at/node/2119).
 Mathematik, \code{*a03} = Musik, \code{*a04} = Naturwissenschaften, 
 \code{*a05} = Sport, \code{*a06} = Sprachen, \code{*a07} = Technik, 
 \code{*a081} = Anderes; vgl.\cr https://www.bifie.at/node/2119).
-\item \code{HISEI}: Auf Schulenenene aggregierte HISEI.
-\item \code{E8RPV}: Auf Schulenenene aggregierte Plausible Values für die Leistung 
+\item \code{HISEI}: Auf Schulenebene aggregierte HISEI.
+\item \code{E8RPV}: Auf Schulenebene aggregierte Plausible Values für die Leistung 
 in Englisch Lesen.
 }}{
 \tabular{ll}{
 \code{idschool} \tab Schulenidentifikator. \cr
-\code{Schultyp} \tab Schultyp (\code{AHS} allgemeinbildenden höhere Schule, bzw. 
-\code{AHS} = allgemeinbildenden Pflichtschule).\cr
+\code{Schultyp} \tab Schultyp (\code{AHS} = allgemeinbildende höhere Schule, bzw. 
+\code{APS} = allgemeinbildende Pflichtschule).\cr
 \code{Strata} \tab Stratum der Schule. (\code{1:4} = Stratum 1 bis Stratum 4, 
 für eine genauere Beschreibung der Strata; siehe Kapitel 
 2 im Band).\cr
@@ -205,8 +205,8 @@ Mathematik, \code{*a03} = Musik, \code{*a04} = Naturwissenschaften,
 \code{*a05} = Sport, \code{*a06} = Sprachen, \code{*a07} = Technik, 
 \code{*a081} = Anderes; vgl. https://www.bifie.at/node/2119). Es handelt sich 
 hierbei um rein fiktive Daten!\cr
-\code{HISEI} \tab Auf Schulenenene aggregierte HISEI.\cr
-\code{E8RPV} \tab Auf Schulenenene aggregierte Plausible Values für die Leistung 
+\code{HISEI} \tab Auf Schulenebene aggregierte HISEI.\cr
+\code{E8RPV} \tab Auf Schulenebene aggregierte Plausible Values für die Leistung 
 in Englisch Lesen.
 }%end tabular
 }%end else / end ifelse latex

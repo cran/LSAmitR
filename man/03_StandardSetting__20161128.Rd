@@ -12,7 +12,7 @@ Herausgeberband Large-Scale Assessment mit \R: Methodische Grundlagen der
 Im Abschnitt \strong{Details} werden die im Kapitel verwendeten \R-Syntaxen zur 
 Unterstützung für Leser/innen kommentiert und dokumentiert. 
 Im Abschnitt \strong{Examples} werden die \R-Syntaxen des Kapitels vollständig 
-wiedergegeben und gegebenfalls erweitert.
+wiedergegeben und gegebenenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------
@@ -237,7 +237,7 @@ cut.R01 <- (-cut.i$coefficients[1])/ cut.i$coefficients[2]
 \subsection{Listing 3: Rater-Analysen}{
 Als ersten Schritt in den Rater-Analysen wird das mittlere Cohen's Kappa eines 
 Raters mit allen anderen Raters berechnet. Dafür werden zunächst die Ratings 
-ausgewählt und dann für jeden Rater die Übereinstimmung mit jeden anderem Rater 
+ausgewählt und dann für jeden Rater die Übereinstimmung mit jedem anderen Rater 
 paarweise berechnet. 
 Anschließend werden diese Werte gemittelt und auch die Standard-Abweichung 
 berechnet. 

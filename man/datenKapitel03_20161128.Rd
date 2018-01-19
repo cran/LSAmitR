@@ -38,7 +38,7 @@ Für die Verwendung der Daten, siehe \code{\link{Kapitel 3}}.
 Methoden eines Standard-Settings beinhalten.
 
 Normierte Personen- und Itemparameter entstammen einer Vorgängerstudie, in der 
-die Parameter für das jeweils zu betrachtende Testinstrumente auf die 
+die Parameter für das jeweils zu betrachtende Testinstrument auf die 
 Berichtsmetrik transformiert wurden (vgl. Kapitel 5, \emph{Testdesign}, und 
 Kapitel 6, \emph{Skalierung und Linking}, im Band).
 

@@ -14,8 +14,8 @@ Large-Scale Assessment mit R: Hilfsfunktionen aus den Kapiteln
 }
 \description{
 Das ist die Nutzerseite zu den Hilfsfunktionen, die in einigen Kapiteln im 
-Herausgeberband Large-Scale Assessment mit R: Methodische Grundlagen der 
-österreichischen Bildungsstandard-Überprüfung angewendet werden.
+Herausgeberband Large-Scale Assessment mit \R: Methodische 
+Grundlagen der österreichischen Bildungsstandardüberprüfung angewendet werden.
 }
 
 %% ----------------------------------------------------------------------------

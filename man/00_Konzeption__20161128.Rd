@@ -9,10 +9,10 @@ Oesterreich}
 \description{
 Das ist die Nutzerseite zum Kapitel 0, \emph{Konzeption der Überprüfung der 
 Bildungsstandards in Österreich}, im Herausgeberband Large-Scale Assessment mit 
-\R: Methodische Grundlagen der österreichischen 
+\R: Methodische Grundlagen der \ifelse{latex}{öster\-reichischen}{österreichischen}
 Bildungsstandardüberprüfung. 
 Hier werden die im Kapitel verwendeten \R-Syntaxen zur Unterstützung für 
-Leser/innen kommentiert, dokumentiert und gegebenefalls erweitert.
+Leser/innen kommentiert, dokumentiert und gegebenenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------

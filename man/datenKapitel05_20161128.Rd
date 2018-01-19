@@ -159,7 +159,7 @@ Testheften (Zeilen), 6 Positionen (Spalten) und 30 Itemblöcken (Zelleneinträge
 
 %%
 \item \strong{tdBibPaare}: Ergebnis des BIB-Design-Algorithmus als Blockpaare, 
-wobei die Zelleneinträge die paarweise Auftretenshäufigkeiten des Zeilenblocks
+wobei die Zelleneinträge die paarweisen Auftretenshäufigkeiten des Zeilenblocks
 mit dem Spaltenblock im Design anzeigen.
 
 \ifelse{latex}{%start latex
@@ -229,7 +229,7 @@ relative Lösungshäufigkeit für dichotome Items). \cr
 
 
 %%
-\item \strong{tdExBib2d}: Vollständiges Itemblock-Design zur Weiterverarbietung 
+\item \strong{tdExBib2d}: Vollständiges Itemblock-Design zur Weiterverarbeitung 
 in den Übungsaufgaben zum Kapitel in tabellarischer Aufstellung mit 10 
 Testheften (Zeilen), 4 Positionen (Spalten) und 10 Itemblöcken (Zelleneinträge). 
 
@@ -249,9 +249,9 @@ Testheften (Zeilen), 4 Positionen (Spalten) und 10 Itemblöcken (Zelleneinträge
 
 
 %%
-\item \strong{tdExBibPaare}: Itemblock-Design zur Weiterverarbietung in den 
+\item \strong{tdExBibPaare}: Itemblock-Design zur Weiterverarbeitung in den 
 Übungsaufgaben in der Darstellung als Blockpaare, wobei die Zelleneinträge 
-die paarweise Auftretenshäufigkeiten des Zeilenblocks mit dem Spaltenblock 
+die paarweisen Auftretenshäufigkeiten des Zeilenblocks mit dem Spaltenblock 
 im Design anzeigen.
 
 \ifelse{latex}{%start latex

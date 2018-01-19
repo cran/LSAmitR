@@ -235,7 +235,7 @@ mit Ankeritems für die Illustration von Linkingmethoden.
 \item \code{idstud}: Schüleridentifikator.
 \item \code{wgtstud}: Stichprobengewicht der Schülerin/des Schülers in der 
 Normierungsstudie (es wird von einer vollständig randomisierten Stichprobe
-ausgegangen, weshalb die Gewichte kostant 1 sind).
+ausgegangen, weshalb die Gewichte konstant 1 sind).
 \item \code{th}: Testheft.
 \item \code{I*}: Itemantworten zu Items, die in der zu linkenden Studie auch 
 eingesetzt werden.
@@ -245,7 +245,7 @@ verwendet werden.
 \code{idstud} \tab Schüleridentifikator.\cr
 \code{wgtstud} \tab Stichprobengewicht der Schülerin/des Schülers in der 
 Normierungsstudie (es wird von einer vollständig randomisierten Stichprobe
-ausgegangen, weshalb die Gewichte kostant 1 sind). \cr
+ausgegangen, weshalb die Gewichte konstant 1 sind). \cr
 \code{th} \tab Testheft.\cr
 \code{I*} \tab Itemantworten zu Items, die in der zu linkenden Studie auch 
 eingesetzt werden. \cr

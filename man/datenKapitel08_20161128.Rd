@@ -154,14 +154,14 @@ geeigneten Behandlung fehlender Werte und von Messfehlern.
 \item \code{x}: Vollständig beobachteter Sozialstatus.
 \item \code{theta}: Kompetenzwert.
 \item \code{WLE}: WLE-Personenschätzer (vgl. Kapitel 6 im Band).
-\item \code{SEWLE}: Messfehlers ("standard error") des WLE-Personenschätzers.
+\item \code{SEWLE}: Messfehler ("standard error") des WLE-Personenschätzers.
 \item \code{X}: Sozialstatus mit teilweise fehlenden Werten. 
 }}{\tabular{ll}{
 \code{index} \tab Laufindex. \cr
 \code{x} \tab Vollständig beobachteter Sozialstatus.\cr
 \code{theta} \tab Kompetenzwert. \cr
 \code{WLE} \tab WLE-Personenschätzer (vgl. Kapitel 6 im Band). \cr
-\code{SEWLE} \tab Messfehlers ("standard error") des WLE-Personenschätzers. \cr
+\code{SEWLE} \tab Messfehler ("standard error") des WLE-Personenschätzers. \cr
 \code{X} \tab Sozialstatus mit teilweise fehlenden Werten. 
 }%end tabular
 }%end else / end ifelse latex

@@ -100,16 +100,16 @@ Pilotierung entstammen.
 \item \code{testlet}: Testletname des Items (gleichbedeutend mit zugewiesenem 
 Stimulus).
 \item \code{item}: Itemname. 
-\item \code{format}: Antwortformt. 
+\item \code{format}: Antwortformat. 
 \item \code{focus}: Fokus des Testitems. 
 \item \code{focusLabel}: Bezeichnung des Fokus des Testitems. 
 \item \code{topic}: Themengebiet des Stimulus. 
 \item \code{no.Words}: Anzahl Wörter im Stimulus. 
 \item \code{key}: Indikator der richtigen Antwort (\code{1:3} = korrekte 
 Antwortoption bei Multiple-Choice Items, \code{A:F} = korrekt zuzuordnende 
-Antwortoption bei Matching-Items, \code{""}= korrekte Antworten für Items im 
+Antwortoption bei Matching-Items, \code{""} = korrekte Antworten für Items im 
 Antwortformat "open gap-fill" werden in Form von Coding-Guides ausgebildeten 
-Kodiererinnen/Kodierern vorgelegt). 
+Kodiererinnen/Kodierern vorgelegt; vgl. Buchkapite). 
 \item \code{maxScore}: Maximal zu erreichende Punkte. 
 \item \code{PR*}: Positionen der Items in den Testheften \code{PR001} bis 
 \code{PR056}.
@@ -241,7 +241,7 @@ bewertete Antworten für Items im Antwortformat "open gap-fill").
 %%
 \item \strong{pilotMM}: Multiple-Marking-Datensatz der Pilotierung mit 
 gemeinsamen Bewertungen einer itemweisen Auswahl von Schülerantworten durch alle 
-Kodiererinnen/Kodern (\code{0} = falsch, \code{1} = richtig, \code{(8, 9)} = wie 
+Kodiererinnen/Kodierer (\code{0} = falsch, \code{1} = richtig, \code{(8, 9)} = wie 
 oben, nicht bewertbare bzw. ausgelassene Itemantwort).
 
 \ifelse{latex}{%start latex

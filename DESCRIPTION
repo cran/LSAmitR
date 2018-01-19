@@ -1,8 +1,9 @@
 Package: LSAmitR
 Type: Package
-Title: Datensätze und Übungsmaterial zu 'Large-Scale Assessment mit R'
-Version: 1.0-0
-Date: 2016-11-16
+Title: Daten, Beispiele und Funktionen zu 'Large-Scale Assessment mit
+        R'
+Version: 1.0-1
+Date: 2018-01-19
 Authors@R: c(person("Thomas", "Kiefer", role = c("aut", "cre"), email =
         "t.kiefer@bifie.at"), person("Alexander", "Robitzsch", role =
         c("aut"), email = "robitzsch@ipn.uni-kiel.de"),
@@ -29,6 +30,6 @@ URL: https://www.bifie.at/node/3770
 Language: de
 Encoding: UTF-8
 NeedsCompilation: no
-Packaged: 2016-11-16 11:10:42 UTC; t.kiefer
+Packaged: 2018-01-19 07:00:48 UTC; t.kiefer
 Repository: CRAN
-Date/Publication: 2016-11-16 12:58:21
+Date/Publication: 2018-01-19 07:56:05 UTC

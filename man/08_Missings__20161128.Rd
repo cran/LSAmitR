@@ -12,7 +12,7 @@ Grundlagen der österreichischen Bildungsstandardüberprüfung.
 Im Abschnitt \strong{Details} werden die im Kapitel verwendeten \R-Syntaxen zur 
 Unterstützung für Leser/innen kommentiert und dokumentiert. 
 Im Abschnitt \strong{Examples} werden die \R-Syntaxen des Kapitels vollständig 
-wiedergegeben und gegebenfalls erweitert.
+wiedergegeben und gegebenenfalls erweitert.
 }
 
 %% ----------------------------------------------------------------------------
@@ -129,7 +129,7 @@ round( cor( dat , use = "pairwise.complete.obs") , 2 )
 
 \subsection{Abschnitt 8.2.5: Durchführung der multiplen Imputation in R}{
 \subsection{Listing 2: Variablenauswahl und leere Imputation}{
-In diesem Abschnitt wird die multiple Imputation basiert auf den MICE-Ansatz im 
+In diesem Abschnitt wird die multiple Imputation basierend auf dem MICE-Ansatz im 
 Paket \code{mice} in R umgesetzt. Als Datensatz soll \code{data08H} verwendet 
 werden. 
 Zur Vereinfachung der Darstellung wählen wir auf der Ebene der Schüler die 
