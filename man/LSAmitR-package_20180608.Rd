@@ -5,7 +5,7 @@
 \encoding{UTF-8}
 
 \title{
-Large-Scale Assessment mit \R
+\packageTitle{LSAmitR}
 }
 
 \description{
@@ -33,26 +33,17 @@ entspricht die Stichprobe, die in Kapitel 2 gezogen wird, nicht jener, deren
 Testwerte in Kapitel 6 oder Kapitel 7 untersucht werden).
 }
 
-\details{
-\tabular{ll}{
-Package: \tab \pkg{LSAmitR}\cr
-Type: \tab Package\cr
-Version: \tab 1.00 \cr
-Publication Year: \tab 2016\cr
-License: \tab GPL (>=2.0)\cr
-URL: \tab \url{https://www.bifie.at/node/3770}\cr
-}
-}
 \author{
-Thomas Kiefer [aut, cre], Alexander Robitzsch [aut], Matthias Trendtel [aut], 
-Robert Fellinger [aut]
+\packageAuthor{LSAmitR}
 
-Maintainer: Thomas Kiefer <t.kiefer@bifie.at>
+Maintainer: \packageMaintainer{LSAmitR}
 }
 \references{
 Breit, S. & Schreiner, C. [HG.] (2016). \emph{Large-Scale Assessment mit \R:
 Methodische Grundlagen der österreichischen Bildungsstandardüberprüfung}. 
 Wien: facultas.
+
+\url{https://www.bifie.at/node/3770}
 }
 
 \seealso{
