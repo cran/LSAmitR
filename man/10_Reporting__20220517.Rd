@@ -67,6 +67,7 @@ Zur \code{\link[LSAmitR:LSAmitR-package]{Übersicht}}.
 %% ----------------------------------------------------------------------------
 %% Examples
 \examples{
+\dontrun{
 library(BIFIEsurvey)
 library(matrixStats)
 
@@ -76,7 +77,6 @@ dat.roh <- datenKapitel10$dat.roh
 dat.schule <- datenKapitel10$dat.schule
 dat.schule.roh <- datenKapitel10$dat.schule.roh
 
-\dontrun{
 ## -------------------------------------------------------------
 ## Abschnitt 10.4.1: Datenbasis
 ## -------------------------------------------------------------

@@ -67,6 +67,7 @@ Zur \code{\link[LSAmitR:LSAmitR-package]{Übersicht}}.
 %% ----------------------------------------------------------------------------
 %% Examples
 \examples{
+\dontrun{
 library(tensor)
 set.seed(1337)
 
@@ -75,7 +76,6 @@ dat.ib <- datenKapitel05$tdItembank
 dat.bib <- datenKapitel05$tdBib2d
 dat.bibPaare <- datenKapitel05$tdBibPaare
 
-\dontrun{
 ## -------------------------------------------------------------
 ## Abschnitt 5.3.2: ATA Methode für das Blockdesign
 ## -------------------------------------------------------------

@@ -736,6 +736,7 @@ grid.arrange(plot.Cut1, plot.Cut2, nrow = 1, top = "Bookmarks pro Rater/in")
 %% ----------------------------------------------------------------------------
 %% Examples
 \examples{
+\dontrun{
 library(car)
 library(irr)
 library(prettyR)
@@ -748,7 +749,6 @@ bookmarks <- datenKapitel03$bookmarks
 sdat <- datenKapitel03$sdat
 productive <- datenKapitel03$productive
 
-\dontrun{
 ## -------------------------------------------------------------
 ## Abschnitt 3.2.2: Daten aus der IDM-Methode
 ## -------------------------------------------------------------

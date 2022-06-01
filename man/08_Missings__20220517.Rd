@@ -375,6 +375,7 @@ round( pv12$pv[c(2,5,9),] , 3 )
 %% ----------------------------------------------------------------------------
 %% Examples
 \examples{
+\dontrun{
 library(TAM)
 library(mice)
 library(miceadds)
@@ -388,7 +389,6 @@ data08I <- datenKapitel08$data08I
 data08J <- datenKapitel08$data08J
 data08K <- datenKapitel08$data08K
 
-\dontrun{
 ## -------------------------------------------------------------
 ## Abschnitt 8.1.1: Konsequenzen fehlender Daten und 
 ##                  messfehlerbehafteter Variablen

@@ -69,6 +69,7 @@ Zur \code{\link[LSAmitR:LSAmitR-package]{Übersicht}}.
 %% ----------------------------------------------------------------------------
 %% Examples
 \examples{
+\dontrun{
 library(difR)
 library(mirt)
 library(sirt)
@@ -80,7 +81,6 @@ dat <- datenKapitel04$dat
 dat.th1 <- datenKapitel04$dat.th1
 ibank <- datenKapitel04$ibank
 
-\dontrun{
 ## -------------------------------------------------------------
 ## Abschnitt 4.4.1 DIF-Analysen für vollständige Daten
 ## -------------------------------------------------------------

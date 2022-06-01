@@ -67,6 +67,7 @@ Zur \code{\link[LSAmitR:LSAmitR-package]{Übersicht}}.
 %% ----------------------------------------------------------------------------
 %% Examples
 \examples{
+\dontrun{
 library(TAM)
 library(miceadds)
 library(irr)
@@ -80,7 +81,6 @@ pilotItems <- datenKapitel01$pilotItems
 pilotRoh <- datenKapitel01$pilotRoh
 pilotMM <- datenKapitel01$pilotMM
 
-\dontrun{
 ## -------------------------------------------------------------
 ## Abschnitt 1.5.5: Aspekte empirischer Güteüberprüfung 
 ## -------------------------------------------------------------

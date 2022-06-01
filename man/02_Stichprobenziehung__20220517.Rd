@@ -607,12 +607,12 @@ for (i in 1:cnt.zones) {
 %% ----------------------------------------------------------------------------
 %% Examples
 \examples{
+\dontrun{
 data(datenKapitel02)
 schueler <- datenKapitel02$schueler
 schule <- datenKapitel02$schule
 set.seed(20150506)
 
-\dontrun{
 ## -------------------------------------------------------------
 ## Abschnitt 4.1: Stratifizierung
 ## -------------------------------------------------------------

@@ -1152,6 +1152,7 @@ print(data.frame(n.r, phi.koeff), digits = 3)
 %% ----------------------------------------------------------------------------
 %% Examples
 \examples{
+\dontrun{
 library(irr)
 library(TAM)
 library(WrightMap)
@@ -1179,7 +1180,6 @@ prodRat <- datenKapitel07$prodRat
 prodRatL <- datenKapitel07$prodRatL
 prodPRat <- datenKapitel07$prodPRat 
 
-\dontrun{
 ## -------------------------------------------------------------
 ## Abschnitt 7.2: Beurteilerübereinstimmung
 ## -------------------------------------------------------------

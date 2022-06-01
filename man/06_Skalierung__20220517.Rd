@@ -68,6 +68,7 @@ Zur \code{\link[LSAmitR:LSAmitR-package]{Übersicht}}.
 %% ----------------------------------------------------------------------------
 %% Examples
 \examples{
+\dontrun{
 library(TAM)
 library(sirt)
 library(WrightMap)
@@ -91,7 +92,6 @@ respTH1 <- datTH1[, -(1:4)]; wTH1 <- datTH1$wgtstud
 # Normierungsstudie
 normdat <- datenKapitel06$normdat
 
-\dontrun{
 ## -------------------------------------------------------------
 ## Abschnitt 6.3.4 Das Partial Credit Model (PCM)
 ## -------------------------------------------------------------

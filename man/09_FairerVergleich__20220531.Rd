@@ -618,6 +618,7 @@ dfr$Auswahl <- 1*(dfr1$sumquare == min(dfr1$sumquare) )
 %% ----------------------------------------------------------------------------
 %% Examples
 \examples{
+\dontrun{
 library(miceadds)
 library(glmnet)
 library(kerdiest)
@@ -661,7 +662,6 @@ dat$expTWLE.Lasso1 <- NA
 dat$expTWLE.Lasso2 <- NA
 dat$expTWLE.np <- NA
 
-\dontrun{
 ## -------------------------------------------------------------
 ## Abschnitt 9.2.5, Umsetzung in R
 ## -------------------------------------------------------------
